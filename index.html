@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oliveira &amp; Cerozino — Dashboard Meta Ads</title>
+<style>
+:root{
+  --paper:#EAEEF2; --surface:#FFFFFF; --surface2:#F6F8FA;
+  --ink:#0B1E33; --ink2:#46586A; --muted:#8091A0;
+  --line:#DFE5EC; --line2:#EAEFF4;
+  --navy:#0B1E33; --navy2:#12293F;
+  --gold:#A9823C; --gold-2:#C6A05A; --gold-soft:#F1E8D6;
+  --good:#2E7D5B; --good-soft:#E4F1EA;
+  --warn:#B07B2B; --warn-soft:#F6ECD8;
+  --shadow:0 1px 2px rgba(11,30,51,.05),0 8px 24px rgba(11,30,51,.06);
+  --serif:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#081019; --surface:#0F1E2C; --surface2:#132536;
+  --ink:#EAF1F7; --ink2:#A7B8C6; --muted:#6C8093;
+  --line:#1D3143; --line2:#17293A; --navy:#081019; --navy2:#0F1E2C;
+  --gold:#CDA85E; --gold-2:#E0C084; --gold-soft:#241E12;
+  --good:#5FBE8F; --good-soft:#12251C; --warn:#D6A24B; --warn-soft:#2A2213;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);}}
+:root[data-theme="dark"]{
+  --paper:#081019; --surface:#0F1E2C; --surface2:#132536;
+  --ink:#EAF1F7; --ink2:#A7B8C6; --muted:#6C8093;
+  --line:#1D3143; --line2:#17293A; --navy:#081019; --navy2:#0F1E2C;
+  --gold:#CDA85E; --gold-2:#E0C084; --gold-soft:#241E12;
+  --good:#5FBE8F; --good-soft:#12251C; --warn:#D6A24B; --warn-soft:#2A2213;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);}
+:root[data-theme="light"]{
+  --paper:#EAEEF2; --surface:#FFFFFF; --surface2:#F6F8FA;
+  --ink:#0B1E33; --ink2:#46586A; --muted:#8091A0;
+  --line:#DFE5EC; --line2:#EAEFF4; --navy:#0B1E33; --navy2:#12293F;
+  --gold:#A9823C; --gold-2:#C6A05A; --gold-soft:#F1E8D6;
+  --good:#2E7D5B; --good-soft:#E4F1EA; --warn:#B07B2B; --warn-soft:#F6ECD8;
+  --shadow:0 1px 2px rgba(11,30,51,.05),0 8px 24px rgba(11,30,51,.06);}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 64px}
+h1,h2,h3{margin:0;font-weight:600;text-wrap:balance}
+.tnum{font-variant-numeric:tabular-nums}
+
+.top{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#EAF1F7;border-bottom:2px solid var(--gold)}
+.top .inner{max-width:1180px;margin:0 auto;padding:22px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.mono{width:46px;height:46px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+  font-family:var(--serif);font-size:19px;color:var(--navy);
+  background:linear-gradient(145deg,var(--gold-2),var(--gold));box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.brand h1{font-family:var(--serif);font-size:22px;letter-spacing:.2px;color:#F4F8FB}
+.brand p{margin:2px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9DB2C4}
+.top .meta{margin-left:auto;text-align:right;font-size:12.5px;color:#9DB2C4}
+.top .meta b{color:#EAF1F7;font-weight:600}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;padding:4px 9px;border-radius:999px;background:var(--gold-soft);color:var(--gold)}
+
+.ribbon{background:var(--gold-soft);border-bottom:1px solid var(--line)}
+.ribbon .inner{max-width:1180px;margin:0 auto;padding:9px 20px;font-size:12.5px;color:var(--gold);
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ribbon .inner b{color:var(--ink)}
+.ribbon.hide{display:none}
+
+/* controls */
+.controls{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  margin:22px 0 4px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.tabbar{display:flex;gap:22px}
+.tabbar button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:15px;font-weight:600;
+  padding:6px 2px;cursor:pointer;border-bottom:2px solid transparent;transition:color .15s}
+.tabbar button:hover{color:var(--ink2)}
+.tabbar button.on{color:var(--ink);border-bottom-color:var(--gold)}
+.seg{display:inline-flex;background:var(--surface2);border:1px solid var(--line);border-radius:11px;padding:3px}
+.seg button{border:0;background:transparent;color:var(--ink2);font:inherit;font-size:13px;font-weight:600;
+  padding:6px 13px;border-radius:8px;cursor:pointer;font-variant-numeric:tabular-nums}
+.seg button.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.periodwrap{display:flex;align-items:center;gap:10px}
+.periodwrap .lbl{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+section{margin-top:24px}
+.eyebrow{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;
+  margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;
+  box-shadow:var(--shadow);position:relative;overflow:hidden}
+.kpi .lab{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.kpi .val{font-family:var(--serif);font-size:30px;line-height:1.1;margin-top:9px}
+.kpi .val .cur{font-size:16px;color:var(--ink2);margin-right:2px}
+.kpi .sub{margin-top:6px;font-size:12.5px;color:var(--ink2)}
+.kpi .rail{position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold)}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 7px;border-radius:6px}
+.tag.good{background:var(--good-soft);color:var(--good)}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+
+.grid2{display:grid;grid-template-columns:1.7fr 1fr;gap:16px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.panel h3{font-size:14px;font-weight:600}
+.panel .hint{font-size:12px;color:var(--muted);margin-top:2px;margin-bottom:6px}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--ink2);margin-top:10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+svg{display:block;width:100%;height:auto}
+
+.cbar{margin-top:14px}
+.cbar .row{margin-bottom:14px}.cbar .row:last-child{margin-bottom:0}
+.cbar .top-l{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:6px}
+.cbar .top-l .v{font-family:var(--serif);font-size:15px}
+.track{height:9px;border-radius:99px;background:var(--surface2);overflow:hidden;border:1px solid var(--line2)}
+.fill{height:100%;border-radius:99px}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
+  overflow:hidden;display:flex;flex-direction:column}
+.card .head{display:flex;gap:13px;padding:15px 15px 12px}
+.thumb{width:70px;height:92px;flex:0 0 auto;border-radius:9px;overflow:hidden;position:relative;display:grid;
+  place-items:center;background:linear-gradient(160deg,var(--navy2),var(--navy));box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb .ph{color:var(--gold-2);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.thumb .play{position:absolute;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center}
+.thumb .play::after{content:"";border-left:8px solid var(--navy);border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
+.rank{position:absolute;top:6px;left:6px;width:20px;height:20px;border-radius:6px;background:var(--gold);color:var(--navy);
+  font-size:11px;font-weight:700;display:grid;place-items:center;font-family:var(--serif)}
+.card .nm{font-size:14px;font-weight:600;line-height:1.3}
+.chips{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+.cmp{font-size:11px;color:var(--ink2);padding:2px 7px;border-radius:6px;background:var(--surface2);border:1px solid var(--line2)}
+.stt{font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:2px 7px;border-radius:6px;background:var(--good-soft);color:var(--good)}
+.leg{font-size:12px;color:var(--ink2);line-height:1.45;padding:0 15px 4px;display:-webkit-box;
+  -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line2);border-top:1px solid var(--line2)}
+.metrics div{background:var(--surface);padding:10px 15px}
+.metrics .m-lab{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.metrics .m-val{font-family:var(--serif);font-size:18px;margin-top:2px}
+.metrics .m-val small{font-size:11px;color:var(--ink2)}
+.perf{padding:11px 15px;border-top:1px solid var(--line2)}
+.perf .track{height:6px}.perf .fill{background:linear-gradient(90deg,var(--gold),var(--gold-2))}
+.perf .cap{font-size:11px;color:var(--muted);margin-top:6px;display:flex;justify-content:space-between}
+.await{padding:11px 15px;border-top:1px solid var(--line2);font-size:11.5px;color:var(--muted)}
+
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:40px;text-align:center;color:var(--ink2)}
+.hide{display:none}
+@media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+@media(max-width:520px){.kpis{grid-template-columns:1fr}.controls{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<header class="top"><div class="inner">
+  <div class="mono">OC</div>
+  <div class="brand"><h1>Oliveira &amp; Cerozino</h1><p>Sociedade de Advogados · Registro de Marca</p></div>
+  <div class="meta"><span class="chip" id="statusChip">Meta Ads</span><div style="margin-top:7px">Atualizado <b id="upd">—</b></div></div>
+</div></header>
+
+<div class="ribbon hide" id="ribbon"><div class="inner">
+  <span class="chip">Prévia</span>
+  <span><b>Números ilustrativos.</b> Assim que as campanhas forem ao ar, os dados reais entram sozinhos a cada hora.</span>
+</div></div>
+
+<div class="wrap">
+  <div class="controls">
+    <div class="tabbar" id="tabbar">
+      <button data-tab="geral" class="on">Visão geral</button>
+      <button data-tab="criativos">Criativos ativos</button>
+    </div>
+    <div class="periodwrap">
+      <span class="lbl">Período</span>
+      <div class="seg" id="periods">
+        <button data-p="1">Hoje</button>
+        <button data-p="7">7 dias</button>
+        <button data-p="14" class="on">14 dias</button>
+        <button data-p="30">30 dias</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="viewGeral">
+    <section><div class="eyebrow">Resumo · <span id="janela">—</span></div><div class="kpis" id="kpis"></div></section>
+    <section><div class="eyebrow">Investimento &amp; resultados</div>
+      <div class="grid2">
+        <div class="panel"><h3>Investimento por dia</h3><div class="hint">Gasto diário e conversas iniciadas no WhatsApp</div>
+          <div id="chart"></div>
+          <div class="legend"><span><i style="background:var(--gold)"></i>Investido (R$)</span><span><i style="background:var(--ink)"></i>Conversas</span></div></div>
+        <div class="panel"><h3>Onde foi investido</h3><div class="hint">Divisão do gasto por campanha</div><div class="cbar" id="split"></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="viewCriativos" class="hide">
+    <section><div class="eyebrow">Todos os criativos ativos · <span id="janelaC">—</span></div><div id="criativos"></div></section>
+  </div>
+
+  <footer><span>Oliveira &amp; Cerozino · Painel interno de acompanhamento</span><span id="foot">—</span></footer>
+</div>
+
+<script src="dados.js"></script>
+<script>
+(function(){
+  "use strict";
+  var BRL=function(n){return (n||0).toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});};
+  var INT=function(n){return Math.round(n||0).toLocaleString("pt-BR");};
+  var esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});};
+  function shiftISO(iso,delta){var p=iso.split("-");var d=new Date(Date.UTC(+p[0],+p[1]-1,+p[2]));d.setUTCDate(d.getUTCDate()+delta);return d.toISOString().slice(0,10);}
+  function brDay(iso){var p=(iso||"").split("-");return p.length===3?p[2]+"/"+p[1]:iso;}
+
+  // ---------- demo 30d ----------
+  function demo(){
+    var ads=[
+      {a:"André 01 — Mito do CNPJ",id:"d1",base:1.55,cv:.16,est:false,leg:"Ter CNPJ não é o mesmo que ter a sua marca protegida. O direito sobre o nome vem do registro no INPI."},
+      {a:"André 03 — Já uso há anos",id:"d3",base:1.30,cv:.14,est:false,leg:"Usar um nome é permitido — mas permitido não é o mesmo que protegido. Tem prioridade quem protocola primeiro."},
+      {a:"André 02 — CNPJ ≠ proteção",id:"d2",base:1.05,cv:.11,est:false,leg:"Abrir o CNPJ não protege a sua marca. São coisas diferentes. A proteção vem do registro no INPI."},
+      {a:"Tiago Estático 01",id:"d4",base:.72,cv:.07,est:true,leg:"Sua marca pode ser o ativo mais valioso do seu negócio — e o mais desprotegido."},
+      {a:"Tiago Estático 02",id:"d5",base:.60,cv:.06,est:true,leg:"Registro de marca no INPI com acompanhamento jurídico completo."}
+    ];
+    var meta=[],mads=[],ca=[],days=30,today=new Date("2026-07-30T00:00:00");
+    ads.forEach(function(ad){ca.push({id:ad.id,a:ad.a,c:"Captação WhatsApp",tipo:"Leads",legenda:ad.leg,status:"ACTIVE",est:ad.est});});
+    for(var k=days-1;k>=0;k--){
+      var dt=new Date(today.getTime()-k*86400000),iso=dt.toISOString().slice(0,10);
+      var wave=0.75+0.35*Math.sin((days-k)/2.4)+0.12*((k*7)%5)/5;
+      var spW=0,imW=0,clW=0,ldW=0;
+      ads.forEach(function(ad){
+        var sp=Math.round(ad.base*16*wave*100)/100,im=Math.round(sp*36+(ad.id.charCodeAt(1)%5)*40),
+            cl=Math.round(im*0.021),ld=Math.max(0,Math.round(sp*ad.cv*wave));
+        spW+=sp;imW+=im;clW+=cl;ldW+=ld;
+        mads.push({d:iso,c:"Captação WhatsApp",tipo:"Leads",a:ad.a,id:ad.id,sp:sp,im:im,rc:Math.round(im*0.82),cl:cl,ld:ld,pv:0});
+      });
+      meta.push({d:iso,c:"Captação WhatsApp",tipo:"Leads",sp:Math.round(spW*100)/100,im:imW,rc:Math.round(imW*0.82),cl:clW,ld:ldW,pv:0});
+      var spI=Math.round(10*wave*100)/100,imI=Math.round(spI*70),clI=Math.round(imI*0.028);
+      meta.push({d:iso,c:"Distribuição Instagram",tipo:"Reconhecimento",sp:spI,im:imI,rc:Math.round(imI*0.8),cl:clI,ld:0,pv:Math.round(clI*0.75)});
+    }
+    return {gerado_em:"2026-07-30T12:00:00",meta:meta,meta_ads:mads,criativos_ativos:ca,thumbs:{},google:[],leads:[],retorno:[],erros:[]};
+  }
+
+  var D=window.IOI_DATA,preview=false;
+  if(!D||!D.meta||!D.meta.length){D=demo();preview=true;}
+  var thumbs=D.thumbs||{};
+  var ativos=D.criativos_ativos||[];
+  // estatico? marca demo, senao deduz pelo nome
+  function isEst(o){return o.est===true||o.tipo==="Reconhecimento"||String(o.a||"").indexOf("Estático")>=0;}
+
+  // datas de referencia
+  var allD=D.meta.map(function(r){return r.d;}).sort();
+  var today=allD.length?allD[allD.length-1]:"2026-07-30";
+
+  function fmtDate(iso){try{var d=new Date(iso);return d.toLocaleDateString("pt-BR")+" "+d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});}catch(e){return iso||"—";}}
+  document.getElementById("upd").textContent=fmtDate(D.gerado_em);
+  document.getElementById("foot").textContent="Gerado em "+fmtDate(D.gerado_em);
+  if(preview){document.getElementById("ribbon").classList.remove("hide");document.getElementById("statusChip").textContent="Prévia";}
+
+  function within(rows,days){var cut=shiftISO(today,-(days-1));return rows.filter(function(r){return r.d>=cut&&r.d<=today;});}
+  var LBL={1:"hoje",7:"últimos 7 dias",14:"últimos 14 dias",30:"últimos 30 dias"};
+
+  function thumbHTML(o,rank){
+    var th=thumbs[o.id],inner;
+    if(th)inner='<img src="'+th+'" alt="">';
+    else inner=isEst(o)?'<div class="ph">Estático</div>':'<div class="play"></div>';
+    return '<div class="thumb">'+(rank?'<div class="rank">'+rank+'</div>':'')+inner+'</div>';
+  }
+
+  function areaChart(rows){
+    if(!rows.length)return '<div class="empty">Sem dados no período.</div>';
+    var W=620,H=180,pad={l:8,r:8,t:14,b:22},iw=W-pad.l-pad.r,ih=H-pad.t-pad.b;
+    var maxSp=Math.max.apply(null,rows.map(function(r){return r.sp;}))||1;
+    var maxLd=Math.max.apply(null,rows.map(function(r){return r.ld;}))||1;
+    var x=function(i){return pad.l+(rows.length<2?iw/2:iw*i/(rows.length-1));};
+    var ySp=function(v){return pad.t+ih-(v/maxSp)*ih;},yLd=function(v){return pad.t+ih-(v/maxLd)*ih*0.9;};
+    var grid="";for(var g=0;g<=3;g++){var gy=pad.t+ih*g/3;grid+='<line x1="'+pad.l+'" y1="'+gy+'" x2="'+(W-pad.r)+'" y2="'+gy+'" stroke="var(--line2)" stroke-width="1"/>';}
+    var lp="";rows.forEach(function(r,i){lp+=(i?"L":"M")+x(i)+" "+ySp(r.sp)+" ";});
+    var ap="M"+x(0)+" "+(pad.t+ih)+" "+lp.replace(/^M/,"L")+"L"+x(rows.length-1)+" "+(pad.t+ih)+" Z";
+    var lpc="";rows.forEach(function(r,i){lpc+=(i?"L":"M")+x(i)+" "+yLd(r.ld)+" ";});
+    var dots="";rows.forEach(function(r,i){dots+='<circle cx="'+x(i)+'" cy="'+yLd(r.ld)+'" r="2.4" fill="var(--ink)"/>';});
+    var last=rows.length-1;
+    var endDot='<circle cx="'+x(last)+'" cy="'+ySp(rows[last].sp)+'" r="4" fill="var(--gold)" stroke="var(--surface)" stroke-width="2"/>';
+    var lab='<text x="'+x(0)+'" y="'+(H-6)+'" fill="var(--muted)" font-size="10.5" text-anchor="start">'+brDay(rows[0].d)+'</text>'+
+            '<text x="'+x(last)+'" y="'+(H-6)+'" fill="var(--muted)" font-size="10.5" text-anchor="end">'+brDay(rows[last].d)+'</text>';
+    return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Investimento por dia"><defs>'+
+      '<linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--gold)" stop-opacity=".28"/>'+
+      '<stop offset="1" stop-color="var(--gold)" stop-opacity="0"/></linearGradient></defs>'+grid+
+      '<path d="'+ap+'" fill="url(#ga)"/><path d="'+lp+'" fill="none" stroke="var(--gold)" stroke-width="2.2" stroke-linejoin="round"/>'+
+      '<path d="'+lpc+'" fill="none" stroke="var(--ink)" stroke-width="1.4" stroke-dasharray="3 3" opacity=".6"/>'+dots+endDot+lab+'</svg>';
+  }
+
+  function render(days){
+    var meta=within(D.meta,days),mads=within(D.meta_ads||[],days);
+    var lab=LBL[days]||("últimos "+days+" dias");
+    document.getElementById("janela").textContent=lab;
+    document.getElementById("janelaC").textContent=lab;
+
+    var T={sp:0,im:0,rc:0,cl:0,ld:0,pv:0};
+    meta.forEach(function(r){T.sp+=r.sp||0;T.im+=r.im||0;T.rc+=r.rc||0;T.cl+=r.cl||0;T.ld+=r.ld||0;T.pv+=r.pv||0;});
+    var cpl=T.ld?T.sp/T.ld:0,cplGood=cpl>0&&cpl<=15;
+    var kpis=[
+      {lab:"Investido",val:'<span class="cur">R$</span>'+BRL(T.sp),sub:lab},
+      {lab:"Conversas no WhatsApp",val:INT(T.ld),sub:T.ld?'<span class="tag '+(cplGood?"good":"warn")+'">R$ '+BRL(cpl)+' / conversa</span>':"—"},
+      {lab:"Custo por conversa",val:'<span class="cur">R$</span>'+BRL(cpl),sub:T.ld?(cplGood?"dentro do esperado":"acompanhar"):"—"},
+      {lab:"Visitas ao perfil",val:INT(T.pv),sub:INT(T.cl)+" cliques no total"},
+      {lab:"Alcance",val:INT(T.rc),sub:INT(T.im)+" impressões"}
+    ];
+    document.getElementById("kpis").innerHTML=kpis.map(function(k){
+      return '<div class="kpi"><div class="rail"></div><div class="lab">'+k.lab+'</div><div class="val tnum">'+k.val+'</div><div class="sub">'+k.sub+'</div></div>';}).join("");
+
+    var byDay={};meta.forEach(function(r){var o=byDay[r.d]||(byDay[r.d]={sp:0,ld:0});o.sp+=r.sp||0;o.ld+=r.ld||0;});
+    var series=Object.keys(byDay).sort().map(function(d){return{d:d,sp:byDay[d].sp,ld:byDay[d].ld};});
+    document.getElementById("chart").innerHTML=areaChart(series);
+
+    var byCamp={};meta.forEach(function(r){byCamp[r.c]=(byCamp[r.c]||0)+(r.sp||0);});
+    var camps=Object.keys(byCamp).map(function(c){return{c:c,sp:byCamp[c]};}).sort(function(a,b){return b.sp-a.sp;});
+    var totC=camps.reduce(function(s,x){return s+x.sp;},0)||1;
+    document.getElementById("split").innerHTML=camps.map(function(x,i){
+      var pct=x.sp/totC*100,col=i===0?"linear-gradient(90deg,var(--gold),var(--gold-2))":"linear-gradient(90deg,var(--navy2),var(--ink2))";
+      return '<div class="row"><div class="top-l"><b>'+esc(x.c)+'</b><span class="v tnum">R$ '+BRL(x.sp)+' <span style="color:var(--muted);font-size:12px">'+pct.toFixed(0)+'%</span></span></div>'+
+        '<div class="track"><div class="fill" style="width:'+pct.toFixed(1)+'%;background:'+col+'"></div></div></div>';}).join("")||'<div class="empty">Sem campanhas.</div>';
+
+    // ---- criativos ativos ----
+    var m={};mads.forEach(function(r){var o=m[r.id]||(m[r.id]={sp:0,im:0,cl:0,ld:0});o.sp+=r.sp||0;o.im+=r.im||0;o.cl+=r.cl||0;o.ld+=r.ld||0;});
+    var lista=(ativos.length?ativos:Object.keys(m).map(function(id){return{id:id,a:id,c:"",tipo:"Leads",legenda:""};})).map(function(o){
+      var mm=m[o.id]||{sp:0,im:0,cl:0,ld:0};return{o:o,sp:mm.sp,im:mm.im,cl:mm.cl,ld:mm.ld,cpl:mm.ld?mm.sp/mm.ld:0};});
+    lista.sort(function(a,b){return (b.ld-a.ld)||(b.sp-a.sp);});
+    var maxLd=Math.max.apply(null,lista.map(function(x){return x.ld;}).concat([1]));
+    var el=document.getElementById("criativos");
+    if(!lista.length){el.innerHTML='<div class="empty">Nenhum criativo ativo no momento. Quando você ligar os anúncios, todos aparecem aqui — com miniatura, legenda e desempenho.</div>';return;}
+    el.innerHTML='<div class="cards">'+lista.map(function(x,i){
+      var o=x.o,good=x.cpl>0&&x.cpl<=15,rel=maxLd?Math.max(4,x.ld/maxLd*100):0,temEntrega=x.sp>0||x.ld>0;
+      return '<div class="card"><div class="head">'+thumbHTML(o,i+1)+
+        '<div><div class="nm">'+esc(o.a)+'</div><div class="chips"><span class="cmp">'+esc(o.c||"—")+'</span><span class="stt">Ativo</span></div></div></div>'+
+        (o.legenda?'<div class="leg">'+esc(o.legenda)+'</div>':'')+
+        '<div class="metrics">'+
+          '<div><div class="m-lab">Investido</div><div class="m-val tnum"><small>R$</small> '+BRL(x.sp)+'</div></div>'+
+          '<div><div class="m-lab">Conversas</div><div class="m-val tnum">'+INT(x.ld)+'</div></div>'+
+          '<div><div class="m-lab">Custo/conversa</div><div class="m-val tnum" style="color:'+(x.ld?(good?"var(--good)":"var(--warn)"):"var(--muted)")+'">'+(x.ld?'<small>R$</small> '+BRL(x.cpl):"—")+'</div></div>'+
+          '<div><div class="m-lab">Impressões</div><div class="m-val tnum">'+INT(x.im)+'</div></div>'+
+        '</div>'+
+        (temEntrega?'<div class="perf"><div class="track"><div class="fill" style="width:'+rel.toFixed(1)+'%"></div></div><div class="cap"><span>Desempenho relativo</span><span>'+INT(x.ld)+' conversas</span></div></div>'
+                   :'<div class="await">Aguardando entrega neste período.</div>')+
+      '</div>';}).join("")+'</div>';
+  }
+
+  // ---- controles ----
+  var period=14;
+  document.getElementById("periods").addEventListener("click",function(e){
+    var b=e.target.closest("button");if(!b)return;
+    period=+b.getAttribute("data-p");
+    [].forEach.call(this.children,function(c){c.classList.toggle("on",c===b);});
+    render(period);
+  });
+  document.getElementById("tabbar").addEventListener("click",function(e){
+    var b=e.target.closest("button");if(!b)return;
+    var t=b.getAttribute("data-tab");
+    [].forEach.call(this.children,function(c){c.classList.toggle("on",c===b);});
+    document.getElementById("viewGeral").classList.toggle("hide",t!=="geral");
+    document.getElementById("viewCriativos").classList.toggle("hide",t!=="criativos");
+  });
+  render(period);
+})();
+</script>
+</body>
+</html>
