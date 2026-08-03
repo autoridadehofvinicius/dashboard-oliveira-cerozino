@@ -38,6 +38,10 @@
   --gold:#A9823C; --gold-2:#C6A05A; --gold-soft:#F1E8D6;
   --good:#2E7D5B; --good-soft:#E4F1EA; --warn:#B07B2B; --warn-soft:#F6ECD8;
   --shadow:0 1px 2px rgba(11,30,51,.05),0 8px 24px rgba(11,30,51,.06);}
+:root{--gg:#2a78d6;--gg-2:#5b9be6;--gg-soft:rgba(42,120,214,.10)}
+@media(prefers-color-scheme:dark){:root{--gg:#5b9be6;--gg-2:#7fb0ec;--gg-soft:rgba(91,155,230,.15)}}
+:root[data-theme="dark"]{--gg:#5b9be6;--gg-2:#7fb0ec;--gg-soft:rgba(91,155,230,.15)}
+:root[data-theme="light"]{--gg:#2a78d6;--gg-2:#5b9be6;--gg-soft:rgba(42,120,214,.10)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
   font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
@@ -144,13 +148,30 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-si
 .hide{display:none}
 @media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
 @media(max-width:520px){.kpis{grid-template-columns:1fr}.controls{flex-direction:column;align-items:flex-start}}
+/* Google */
+.kpi.g .rail{background:var(--gg)}
+.tblwrap{max-height:440px;overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow)}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{position:sticky;top:0;background:var(--surface);text-align:left;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--line2);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mtag{font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:5px;background:var(--surface2);border:1px solid var(--line2);color:var(--ink2)}
+.gchip{display:inline-block;font-size:11.5px;padding:3px 8px;border-radius:7px;background:var(--gg-soft);color:var(--gg);margin:0 4px 4px 0}
+.gcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:16px}
+.gcard .gl{position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gg)}
+.gstt{font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:6px}
+.gstt.ok{background:var(--good-soft);color:var(--good)}
+.gstt.rev{background:var(--warn-soft);color:var(--warn)}
+.gstt.no{background:var(--warn-soft);color:#B0402B}
+.gurl{margin-top:9px;font-size:11px;color:var(--gg);word-break:break-all}
 </style>
 </head>
 <body>
 <header class="top"><div class="inner">
   <div class="mono">OC</div>
   <div class="brand"><h1>Oliveira &amp; Cerozino</h1><p>Sociedade de Advogados · Registro de Marca</p></div>
-  <div class="meta"><span class="chip" id="statusChip">Meta Ads</span><div style="margin-top:7px">Atualizado <b id="upd">—</b></div></div>
+  <div class="meta"><span class="chip" id="statusChip">Meta + Google</span><div style="margin-top:7px">Atualizado <b id="upd">—</b></div></div>
 </div></header>
 
 <div class="ribbon hide" id="ribbon"><div class="inner">
@@ -163,6 +184,7 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-si
     <div class="tabbar" id="tabbar">
       <button data-tab="geral" class="on">Visão geral</button>
       <button data-tab="criativos">Criativos ativos</button>
+      <button data-tab="google">Google</button>
     </div>
     <div class="periodwrap">
       <span class="lbl">Período</span>
@@ -189,6 +211,21 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-si
 
   <div id="viewCriativos" class="hide">
     <section><div class="eyebrow">Todos os criativos ativos · <span id="janelaC">—</span></div><div id="criativos"></div></section>
+  </div>
+
+  <div id="viewGoogle" class="hide">
+    <section><div class="eyebrow">Google Ads · Rede de Pesquisa · <span id="janelaG">—</span></div><div class="kpis" id="kpisG"></div></section>
+    <section><div class="eyebrow">Investimento &amp; cliques</div>
+      <div class="grid2">
+        <div class="panel"><h3>Investimento por dia</h3><div class="hint">Gasto diário e cliques no Google</div>
+          <div id="chartG"></div>
+          <div class="legend"><span><i style="background:var(--gg)"></i>Investido (R$)</span><span><i style="background:var(--ink)"></i>Cliques</span></div></div>
+        <div class="panel"><h3>Onde foi investido</h3><div class="hint">Divisão do gasto por campanha</div><div class="cbar" id="splitG"></div></div>
+      </div>
+    </section>
+    <section><div class="eyebrow">Anúncios no ar</div><div id="gads"></div></section>
+    <section><div class="eyebrow">Palavras-chave que estamos usando · últimos 30 dias</div><div id="gkw"></div></section>
+    <section><div class="eyebrow">Termos de busca reais · o que digitaram no Google · últimos 30 dias</div><div id="gterms"></div></section>
   </div>
 
   <footer><span>Oliveira &amp; Cerozino · Painel interno de acompanhamento</span><span id="foot">—</span></footer>
@@ -233,7 +270,7 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-si
   }
 
   var D=window.IOI_DATA,preview=false;
-  if(!D||!D.meta||!D.meta.length){D=demo();preview=true;}
+  if(!D||!D.meta||!D.meta.length){var _dm=demo();if(!D){D=_dm;}else{D.meta=_dm.meta;D.meta_ads=_dm.meta_ads;D.criativos_ativos=_dm.criativos_ativos;D.thumbs=_dm.thumbs;}preview=true;}
   var thumbs=D.thumbs||{};
   var ativos=D.criativos_ativos||[];
   // estatico? marca demo, senao deduz pelo nome
@@ -336,13 +373,88 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-si
       '</div>';}).join("")+'</div>';
   }
 
+  // ---------- GOOGLE ----------
+  function gAreaChart(rows){
+    if(!rows.length)return '<div class="empty">Sem dados no período.</div>';
+    var W=620,H=180,pad={l:8,r:8,t:14,b:22},iw=W-pad.l-pad.r,ih=H-pad.t-pad.b;
+    var maxSp=Math.max.apply(null,rows.map(function(r){return r.sp;}))||1;
+    var maxCl=Math.max.apply(null,rows.map(function(r){return r.cl;}))||1;
+    var x=function(i){return pad.l+(rows.length<2?iw/2:iw*i/(rows.length-1));};
+    var ySp=function(v){return pad.t+ih-(v/maxSp)*ih;},yCl=function(v){return pad.t+ih-(v/maxCl)*ih*0.9;};
+    var grid="";for(var g=0;g<=3;g++){var gy=pad.t+ih*g/3;grid+='<line x1="'+pad.l+'" y1="'+gy+'" x2="'+(W-pad.r)+'" y2="'+gy+'" stroke="var(--line2)" stroke-width="1"/>';}
+    var lp="";rows.forEach(function(r,i){lp+=(i?"L":"M")+x(i)+" "+ySp(r.sp)+" ";});
+    var ap="M"+x(0)+" "+(pad.t+ih)+" "+lp.replace(/^M/,"L")+"L"+x(rows.length-1)+" "+(pad.t+ih)+" Z";
+    var lpc="";rows.forEach(function(r,i){lpc+=(i?"L":"M")+x(i)+" "+yCl(r.cl)+" ";});
+    var dots="";rows.forEach(function(r,i){dots+='<circle cx="'+x(i)+'" cy="'+yCl(r.cl)+'" r="2.4" fill="var(--ink)"/>';});
+    var last=rows.length-1;
+    var endDot='<circle cx="'+x(last)+'" cy="'+ySp(rows[last].sp)+'" r="4" fill="var(--gg)" stroke="var(--surface)" stroke-width="2"/>';
+    var lab='<text x="'+x(0)+'" y="'+(H-6)+'" fill="var(--muted)" font-size="10.5" text-anchor="start">'+brDay(rows[0].d)+'</text>'+
+            '<text x="'+x(last)+'" y="'+(H-6)+'" fill="var(--muted)" font-size="10.5" text-anchor="end">'+brDay(rows[last].d)+'</text>';
+    return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Investimento Google por dia"><defs>'+
+      '<linearGradient id="gga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--gg)" stop-opacity=".28"/>'+
+      '<stop offset="1" stop-color="var(--gg)" stop-opacity="0"/></linearGradient></defs>'+grid+
+      '<path d="'+ap+'" fill="url(#gga)"/><path d="'+lp+'" fill="none" stroke="var(--gg)" stroke-width="2.2" stroke-linejoin="round"/>'+
+      '<path d="'+lpc+'" fill="none" stroke="var(--ink)" stroke-width="1.4" stroke-dasharray="3 3" opacity=".6"/>'+dots+endDot+lab+'</svg>';
+  }
+
+  function renderGoogle(days){
+    var g=within(D.google||[],days);
+    var lab=LBL[days]||("últimos "+days+" dias");
+    document.getElementById("janelaG").textContent=lab;
+    var T={sp:0,im:0,cl:0,cv:0};
+    g.forEach(function(r){T.sp+=r.sp||0;T.im+=r.im||0;T.cl+=r.cl||0;T.cv+=r.cv||0;});
+    var ctr=T.im?(T.cl/T.im*100):0,cpc=T.cl?T.sp/T.cl:0;
+    var kpis=[
+      {lab:"Investido no Google",val:'<span class="cur">R$</span>'+BRL(T.sp),sub:lab},
+      {lab:"Cliques",val:INT(T.cl),sub:T.cl?('R$ '+BRL(cpc)+' / clique'):"aguardando entrega"},
+      {lab:"Impressões",val:INT(T.im),sub:"vezes que apareceu"},
+      {lab:"Conversões",val:INT(T.cv),sub:"leads registrados"},
+      {lab:"CTR",val:ctr.toFixed(1).replace(".",",")+"%",sub:"cliques ÷ impressões"}
+    ];
+    document.getElementById("kpisG").innerHTML=kpis.map(function(k){
+      return '<div class="kpi g"><div class="rail"></div><div class="lab">'+k.lab+'</div><div class="val tnum">'+k.val+'</div><div class="sub">'+k.sub+'</div></div>';}).join("");
+
+    var byDay={};g.forEach(function(r){var o=byDay[r.d]||(byDay[r.d]={sp:0,cl:0});o.sp+=r.sp||0;o.cl+=r.cl||0;});
+    var series=Object.keys(byDay).sort().map(function(d){return{d:d,sp:byDay[d].sp,cl:byDay[d].cl};});
+    document.getElementById("chartG").innerHTML=gAreaChart(series);
+
+    var byCamp={};g.forEach(function(r){byCamp[r.c]=(byCamp[r.c]||0)+(r.sp||0);});
+    var camps=Object.keys(byCamp).map(function(c){return{c:c,sp:byCamp[c]};}).sort(function(a,b){return b.sp-a.sp;});
+    var totC=camps.reduce(function(s,x){return s+x.sp;},0)||1;
+    document.getElementById("splitG").innerHTML=camps.map(function(x,i){
+      var pct=x.sp/totC*100,col=i===0?"linear-gradient(90deg,var(--gg),var(--gg-2))":"linear-gradient(90deg,var(--navy2),var(--ink2))";
+      return '<div class="row"><div class="top-l"><b>'+esc(x.c)+'</b><span class="v tnum">R$ '+BRL(x.sp)+' <span style="color:var(--muted);font-size:12px">'+pct.toFixed(0)+'%</span></span></div>'+
+        '<div class="track"><div class="fill" style="width:'+pct.toFixed(1)+'%;background:'+col+'"></div></div></div>';}).join("")||'<div class="empty">Sem gasto no período.</div>';
+
+    var ads=D.google_ads||[];
+    document.getElementById("gads").innerHTML=ads.length?('<div class="cards">'+ads.map(function(ad){
+      var ok=/Aprovado/i.test(ad.aprov),rev=/revis/i.test(ad.aprov),cls=ok?"ok":(rev?"rev":"no");
+      return '<div class="gcard" style="position:relative"><div class="gl"></div>'+
+        '<div class="nm">'+esc(ad.c)+'</div>'+
+        '<div class="chips"><span class="cmp">'+esc(ad.ag)+'</span><span class="gstt '+cls+'">'+esc(ad.aprov)+'</span></div>'+
+        '<div style="margin-top:11px">'+(ad.titulos||[]).slice(0,10).map(function(t){return '<span class="gchip">'+esc(t)+'</span>';}).join("")+'</div>'+
+        ((ad.descricoes&&ad.descricoes.length)?'<div class="leg" style="padding:9px 0 0;-webkit-line-clamp:3">'+esc((ad.descricoes||[]).join("  ·  "))+'</div>':"")+
+        (ad.url?'<div class="gurl">'+esc(ad.url)+'</div>':"")+
+      '</div>';}).join("")+'</div>'):'<div class="empty">Os anúncios que estamos rodando aparecem aqui assim que a campanha do Google estiver ativa.</div>';
+
+    var kw=D.google_kw||[];
+    document.getElementById("gkw").innerHTML=kw.length?('<div class="tblwrap"><table class="tbl"><thead><tr><th>Palavra-chave</th><th>Tipo</th><th>Campanha / Grupo</th><th class="num">Impr.</th><th class="num">Cliques</th><th class="num">Gasto</th><th class="num">Conv.</th></tr></thead><tbody>'+
+      kw.map(function(k){return '<tr><td>'+esc(k.kw)+'</td><td><span class="mtag">'+esc(k.match)+'</span></td><td style="color:var(--ink2)">'+esc(k.c)+' · '+esc(k.ag)+'</td><td class="num">'+INT(k.im)+'</td><td class="num">'+INT(k.cl)+'</td><td class="num">R$ '+BRL(k.sp)+'</td><td class="num">'+INT(k.cv)+'</td></tr>';}).join("")+
+      '</tbody></table></div>'):'<div class="empty">As palavras-chave que estamos usando aparecem aqui.</div>';
+
+    var tm=D.google_termos||[];
+    document.getElementById("gterms").innerHTML=tm.length?('<div class="tblwrap"><table class="tbl"><thead><tr><th>Termo pesquisado</th><th>Campanha</th><th class="num">Impr.</th><th class="num">Cliques</th><th class="num">Gasto</th><th class="num">Conv.</th></tr></thead><tbody>'+
+      tm.map(function(t){return '<tr><td>'+esc(t.termo)+'</td><td style="color:var(--ink2)">'+esc(t.c)+'</td><td class="num">'+INT(t.im)+'</td><td class="num">'+INT(t.cl)+'</td><td class="num">R$ '+BRL(t.sp)+'</td><td class="num">'+INT(t.cv)+'</td></tr>';}).join("")+
+      '</tbody></table></div>'):'<div class="empty">Os termos que as pessoas digitaram no Google aparecem aqui quando houver buscas.</div>';
+  }
+
   // ---- controles ----
   var period=14;
   document.getElementById("periods").addEventListener("click",function(e){
     var b=e.target.closest("button");if(!b)return;
     period=+b.getAttribute("data-p");
     [].forEach.call(this.children,function(c){c.classList.toggle("on",c===b);});
-    render(period);
+    render(period);renderGoogle(period);
   });
   document.getElementById("tabbar").addEventListener("click",function(e){
     var b=e.target.closest("button");if(!b)return;
@@ -350,8 +462,9 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-si
     [].forEach.call(this.children,function(c){c.classList.toggle("on",c===b);});
     document.getElementById("viewGeral").classList.toggle("hide",t!=="geral");
     document.getElementById("viewCriativos").classList.toggle("hide",t!=="criativos");
+    document.getElementById("viewGoogle").classList.toggle("hide",t!=="google");
   });
-  render(period);
+  render(period);renderGoogle(period);
 })();
 </script>
 </body>
