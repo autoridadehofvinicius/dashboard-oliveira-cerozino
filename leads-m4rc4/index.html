@@ -3,147 +3,260 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
-<title>Leads · Registro de Marca</title>
+<meta name="theme-color" content="#0E1014">
+<title>Leads · Registro de Marca · Oliveira &amp; Cerozino</title>
+<link rel="icon" href="logo.png">
 <style>
-:root{--f:#f6f7f9;--c:#fff;--t:#12181f;--m:#5b6672;--l:#e4e8ec;
-  --q:#b3261e;--mo:#8a6d1f;--fr:#5b6672;--wa:#128c7e;--ac:#0f3d5c}
-@media(prefers-color-scheme:dark){:root{--f:#0e1216;--c:#171d24;--t:#eef2f6;
-  --m:#98a4b0;--l:#252d36;--q:#f2795f;--mo:#e0be5c;--fr:#98a4b0;--wa:#25d366;--ac:#7fb3d5}}
+:root{
+  --bg:#0E1014; --bg2:#14171D; --card:#171B22; --card-alta:#1B2029;
+  --line:#252B36; --line2:#1C222B;
+  --ink:#EDEFF3; --ink2:#AFB7C3; --muted:#79838F;
+  --gold:#E2BF6A; --gold-2:#C9A44F; --gold-soft:rgba(226,191,106,.09);
+  --quente:#E2BF6A; --morno:#8E97A4; --frio:#5C646F; --wa:#2AA765;
+  --serif:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--f);color:var(--t);
-  font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.topo{position:sticky;top:0;background:var(--c);border-bottom:1px solid var(--l);
-  padding:14px 16px;z-index:5}
-.topo h1{margin:0;font-size:1.06rem;letter-spacing:-.01em}
-.res{margin-top:4px;font-size:.82rem;color:var(--m)}
-.filtros{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}
-.filtros button{border:1px solid var(--l);background:transparent;color:var(--m);
-  padding:6px 13px;border-radius:999px;font-size:.8rem;cursor:pointer;font-weight:600}
-.filtros button.on{background:var(--t);color:var(--c);border-color:var(--t)}
-main{padding:14px 16px 40px;max-width:44rem;margin:0 auto;
-  display:flex;flex-direction:column;gap:12px}
-.lead{background:var(--c);border:1px solid var(--l);border-radius:12px;
-  padding:15px 16px;border-left:4px solid var(--fr)}
-.lead.quente{border-left-color:var(--q)}
-.lead.morno{border-left-color:var(--mo)}
-.lead.atendido{opacity:.45}
-.lead header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.lead h2{margin:0;font-size:1.04rem;line-height:1.3}
-.quando{font-size:.78rem;color:var(--m);margin-top:2px}
-.selo{font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  padding:3px 9px;border-radius:999px;border:1px solid currentColor;color:var(--fr);
-  white-space:nowrap}
-.selo.quente{color:var(--q)} .selo.morno{color:var(--mo)}
-.marca{margin:12px 0 10px;font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
-.marca span{display:block;font-size:.66rem;font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--m);margin-bottom:1px}
-dl{margin:0 0 13px;display:grid;gap:7px}
-dl div{display:grid;grid-template-columns:104px 1fr;gap:10px;font-size:.86rem}
-dt{color:var(--m)} dd{margin:0}
-.acoes{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.wa{background:var(--wa);color:#fff;text-decoration:none;padding:9px 15px;
-  border-radius:8px;font-weight:600;font-size:.88rem}
-.tel{color:var(--ac);text-decoration:none;font-size:.88rem;font-weight:600}
-.feito{margin-left:auto;border:1px solid var(--l);background:transparent;
-  color:var(--m);padding:7px 12px;border-radius:8px;font-size:.8rem;cursor:pointer}
-.email{margin-top:10px;font-size:.8rem;color:var(--m);word-break:break-all}
-.vazio{text-align:center;color:var(--m);padding:56px 20px;font-size:.92rem}
-</style></head><body>
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 var(--sans);
+  -webkit-font-smoothing:antialiased}
+.faixa{max-width:47rem;margin:0 auto;padding:0 20px}
 
-<div class="topo">
-  <h1>Leads · Registro de Marca</h1>
-  <div class="res"><b>3</b> no total · <b>1</b> de prioridade
-    · último em 08/09/2026 às 21:25</div>
-  <div class="filtros">
-    <button class="on" data-f="todos">Todos</button>
-    <button data-f="quente">Prioridade</button>
-    <button data-f="pendentes">Não atendidos</button>
+/* ----------------------------------------------------------- cabecalho */
+header.topo{background:linear-gradient(180deg,#14171D 0%,#0E1014 100%);
+  border-bottom:1px solid var(--line)}
+header.topo .faixa{padding-top:26px;padding-bottom:24px}
+.marca{display:flex;align-items:center;gap:15px}
+.marca img{width:46px;height:auto;display:block;flex:none}
+.marca h1{margin:0;font:400 1.32rem/1.2 var(--serif);letter-spacing:.005em}
+.marca p{margin:3px 0 0;font-size:.7rem;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--muted)}
+.regua{height:1px;margin:20px 0 18px;
+  background:linear-gradient(90deg,var(--gold-2),rgba(201,164,79,.14) 62%,transparent)}
+.olho{display:block;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:6px}
+.secao h2{margin:0;font:400 1.78rem/1.15 var(--serif);letter-spacing:-.01em}
+
+/* -------------------------------------------------------------- resumo */
+.resumo{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line2);border:1px solid var(--line2);border-radius:3px;
+  overflow:hidden;margin-top:22px}
+.bloco{background:var(--bg2);padding:15px 17px}
+.bloco .n{font:400 1.85rem/1 var(--serif);color:var(--ink);letter-spacing:-.01em}
+.bloco.destaque .n{color:var(--gold)}
+.bloco .r{margin-top:5px;font-size:.66rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--muted)}
+
+/* ------------------------------------------------------------- filtros */
+.barra{position:sticky;top:0;z-index:9;background:rgba(14,16,20,.93);
+  backdrop-filter:blur(9px);border-bottom:1px solid var(--line2)}
+.barra .faixa{display:flex;gap:8px;padding-top:12px;padding-bottom:12px;
+  flex-wrap:wrap}
+.barra button{border:1px solid var(--line);background:transparent;color:var(--ink2);
+  padding:7px 15px;border-radius:2px;font:600 .76rem/1 var(--sans);
+  letter-spacing:.07em;text-transform:uppercase;cursor:pointer;
+  transition:border-color .15s,color .15s}
+.barra button:hover{border-color:var(--gold-2);color:var(--ink)}
+.barra button.on{background:var(--gold);border-color:var(--gold);color:#171B22}
+
+/* -------------------------------------------------------------- cartao */
+main{padding:24px 0 56px;display:flex;flex-direction:column;gap:14px}
+.lead{background:var(--card);border:1px solid var(--line2);border-radius:3px;
+  padding:20px 22px;position:relative;overflow:hidden}
+.lead::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--frio)}
+.lead.morno::before{background:var(--morno)}
+.lead.quente::before{background:var(--gold)}
+.lead.quente{background:var(--card-alta);border-color:rgba(226,191,106,.24)}
+.lead.atendido{opacity:.42}
+.lead .cab{display:flex;justify-content:space-between;gap:14px;
+  align-items:flex-start}
+.lead h3{margin:0;font:400 1.24rem/1.25 var(--serif)}
+.quando{margin-top:4px;font-size:.74rem;color:var(--muted)}
+.selo{flex:none;font:600 .62rem/1 var(--sans);letter-spacing:.15em;
+  text-transform:uppercase;padding:6px 11px;border:1px solid currentColor;
+  border-radius:2px;color:var(--frio)}
+.selo.morno{color:var(--morno)}
+.selo.quente{color:var(--quente);background:var(--gold-soft)}
+.amarca{margin:17px 0 15px;padding:13px 15px;background:rgba(255,255,255,.022);
+  border-left:2px solid var(--gold-2)}
+.amarca span{display:block;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.amarca b{font:400 1.2rem/1.25 var(--serif);color:var(--gold);word-break:break-word}
+dl{margin:0 0 17px;display:grid;gap:9px}
+dl div{display:grid;grid-template-columns:8.4rem 1fr;gap:12px;font-size:.87rem;
+  align-items:baseline}
+dt{color:var(--muted);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase}
+dd{margin:0;color:var(--ink2)}
+.acoes{display:flex;gap:9px;flex-wrap:wrap;align-items:center;
+  padding-top:15px;border-top:1px solid var(--line2)}
+.wa{background:var(--wa);color:#08130D;text-decoration:none;padding:10px 17px;
+  border-radius:2px;font:700 .82rem/1 var(--sans);letter-spacing:.03em}
+.wa:hover{filter:brightness(1.08)}
+.fone{color:var(--ink2);text-decoration:none;font-size:.85rem;
+  border-bottom:1px solid var(--line);padding-bottom:1px}
+.fone:hover{color:var(--gold)}
+.feito{margin-left:auto;border:1px solid var(--line);background:transparent;
+  color:var(--muted);padding:9px 13px;border-radius:2px;font-size:.74rem;
+  letter-spacing:.06em;cursor:pointer}
+.feito:hover{border-color:var(--gold-2);color:var(--ink2)}
+.email{margin-top:12px;font-size:.78rem;color:var(--muted);word-break:break-all}
+.vazio{background:var(--card);border:1px dashed var(--line);border-radius:3px;
+  padding:62px 24px;text-align:center;color:var(--muted)}
+.vazio b{display:block;font:400 1.16rem/1.4 var(--serif);color:var(--ink2);
+  margin-bottom:7px}
+
+/* -------------------------------------------------------------- rodape */
+footer{border-top:1px solid var(--line2);background:var(--bg2)}
+footer .faixa{padding-top:22px;padding-bottom:26px;display:flex;
+  justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.76rem;
+  color:var(--muted)}
+footer b{color:var(--ink2);font-weight:600}
+footer .por{text-align:right}
+
+@media(max-width:560px){
+  .resumo{grid-template-columns:1fr}
+  .secao h2{font-size:1.5rem}
+  dl div{grid-template-columns:1fr;gap:2px}
+  dt{font-size:.63rem}
+  .feito{margin-left:0}
+  footer .faixa{flex-direction:column}
+  footer .por{text-align:left}
+}
+</style>
+</head><body>
+
+<header class="topo"><div class="faixa">
+  <div class="marca">
+    <img src="logo.png" alt="Oliveira &amp; Cerozino" width="46">
+    <div>
+      <h1>Oliveira &amp; Cerozino</h1>
+      <p>Sociedade de Advogados</p>
+    </div>
   </div>
-</div>
+  <div class="regua"></div>
+  <div class="secao">
+    <span class="olho">Capta&ccedil;&atilde;o &middot; Meta Ads</span>
+    <h2>Registro de Marca</h2>
+  </div>
+  <div class="resumo">
+    <div class="bloco"><div class="n">3</div>
+      <div class="r">Leads recebidos</div></div>
+    <div class="bloco destaque"><div class="n">1</div>
+      <div class="r">De prioridade</div></div>
+    <div class="bloco"><div class="n" id="pendentes">&mdash;</div>
+      <div class="r">Aguardando contato</div></div>
+  </div>
+</div></header>
 
-<main id="lista">
+<nav class="barra"><div class="faixa">
+  <button class="on" data-f="todos">Todos</button>
+  <button data-f="quente">Prioridade</button>
+  <button data-f="pendentes">N&atilde;o atendidos</button>
+</div></nav>
 
+<main class="faixa" id="lista">
       <article class="lead morno" data-temp="morno" data-id="1382449750729750">
-        <header>
+        <div class="cab">
           <div>
-            <h2>Priscila Sabina</h2>
+            <h3>Priscila Sabina</h3>
             <div class="quando">08/09/2026 às 21:25</div>
           </div>
-          <span class="selo morno">morno</span>
-        </header>
-        <div class="marca"><span>Marca</span>JÉ</div>
+          <span class="selo morno">Morno</span>
+        </div>
+        <div class="amarca"><span>Marca</span><b>JÉ</b></div>
         <dl>
           <div><dt>Atividade</dt><dd>Têxtil</dd></div>
-          <div><dt>Situação</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div>
+          <div><dt>Situa&ccedil;&atilde;o</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div>
           <div><dt>Prazo</dt><dd>Nos próximos meses</dd></div>
           <div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div>
         </dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5511961964848?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20J%C3%89%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
-          <a class="tel" href="tel:+5511961964848">(11) 96196-4848</a>
+          <a class="fone" href="tel:+5511961964848">(11) 96196-4848</a>
           <button class="feito" type="button">Marcar atendido</button>
         </div>
         <div class="email">priscillasabinas@gmail.com</div>
       </article>
       <article class="lead frio" data-temp="frio" data-id="1337260248233672">
-        <header>
+        <div class="cab">
           <div>
-            <h2>Roberto Balduíno de Farias</h2>
+            <h3>Roberto Balduíno de Farias</h3>
             <div class="quando">08/09/2026 às 20:19</div>
           </div>
-          <span class="selo frio">frio</span>
-        </header>
-        <div class="marca"><span>Marca</span>RBF Logística e imóveis</div>
+          <span class="selo frio">Frio</span>
+        </div>
+        <div class="amarca"><span>Marca</span><b>RBF Logística e imóveis</b></div>
         <dl>
           <div><dt>Atividade</dt><dd>classes 39,37,36.</dd></div>
-          <div><dt>Situação</dt><dd>Ainda estou apenas avaliando a ideia</dd></div>
+          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Ainda estou apenas avaliando a ideia</dd></div>
           <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
           <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
         </dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5542999350378?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20RBF%20Log%C3%ADstica%20e%20im%C3%B3veis%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
-          <a class="tel" href="tel:+5542999350378">(42) 99935-0378</a>
+          <a class="fone" href="tel:+5542999350378">(42) 99935-0378</a>
           <button class="feito" type="button">Marcar atendido</button>
         </div>
         <div class="email">robertobalduino02@gmail.com</div>
       </article>
       <article class="lead quente" data-temp="quente" data-id="1559528445419594">
-        <header>
+        <div class="cab">
           <div>
-            <h2>Silvana Oliveira</h2>
+            <h3>Silvana Oliveira</h3>
             <div class="quando">08/09/2026 às 17:38</div>
           </div>
-          <span class="selo quente">quente</span>
-        </header>
-        <div class="marca"><span>Marca</span>Faculdade beer</div>
+          <span class="selo quente">Prioridade</span>
+        </div>
+        <div class="amarca"><span>Marca</span><b>Faculdade beer</b></div>
         <dl>
           <div><dt>Atividade</dt><dd>Bar e restaurante</dd></div>
-          <div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div>
+          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
           <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
           <div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div>
         </dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5575998268616?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Faculdade%20beer%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
-          <a class="tel" href="tel:+5575998268616">(75) 99826-8616</a>
+          <a class="fone" href="tel:+5575998268616">(75) 99826-8616</a>
           <button class="feito" type="button">Marcar atendido</button>
         </div>
         <div class="email">Silvaniaolibeiira14@gmail.com</div>
-      </article>
-</main>
+      </article></main>
+
+<footer><div class="faixa">
+  <div>Painel interno &middot; &uacute;ltimo lead em <b>08/09/2026 às 21:25</b></div>
+  <div class="por">Desenvolvido por <b>Vinicius A. Souza</b><br>
+    Gest&atilde;o de Tr&aacute;fego e Intelig&ecirc;ncia de Dados</div>
+</div></footer>
 
 <script>
-/* "atendido" fica no proprio aparelho. NAO e compartilhado entre a equipe —
-   se a Bruna marcar no celular dela, o Kaique continua vendo como pendente. */
+/* "Atendido" mora no proprio aparelho. NAO e compartilhado com a equipe: se a
+   secretaria marcar no celular dela, o advogado continua vendo como pendente.
+   Compartilhar exigiria banco de dados, e a pagina e estatica de proposito. */
 var FEITOS = JSON.parse(localStorage.getItem('oc_leads_feitos') || '[]');
+var filtro = 'todos';
+
 function pinta(){
+  var pend = 0;
   document.querySelectorAll('.lead').forEach(function(el){
     var f = FEITOS.indexOf(el.dataset.id) >= 0;
     el.classList.toggle('atendido', f);
+    if (!f) pend++;
     var b = el.querySelector('.feito');
     if (b) b.textContent = f ? 'Atendido' : 'Marcar atendido';
+  });
+  var alvo = document.getElementById('pendentes');
+  if (alvo) alvo.textContent = pend;
+}
+function aplica(){
+  document.querySelectorAll('.lead').forEach(function(el){
+    var ok = filtro === 'todos'
+      || (filtro === 'quente'    && el.dataset.temp === 'quente')
+      || (filtro === 'pendentes' && FEITOS.indexOf(el.dataset.id) < 0);
+    el.style.display = ok ? '' : 'none';
   });
 }
 document.addEventListener('click', function(e){
@@ -154,18 +267,10 @@ document.addEventListener('click', function(e){
   localStorage.setItem('oc_leads_feitos', JSON.stringify(FEITOS));
   pinta(); aplica();
 });
-var filtro = 'todos';
-function aplica(){
-  document.querySelectorAll('.lead').forEach(function(el){
-    var ok = filtro === 'todos'
-      || (filtro === 'quente'    && el.dataset.temp === 'quente')
-      || (filtro === 'pendentes' && FEITOS.indexOf(el.dataset.id) < 0);
-    el.style.display = ok ? '' : 'none';
-  });
-}
-document.querySelectorAll('.filtros button').forEach(function(b){
+document.querySelectorAll('.barra button').forEach(function(b){
   b.addEventListener('click', function(){
-    document.querySelectorAll('.filtros button').forEach(function(x){x.classList.remove('on')});
+    document.querySelectorAll('.barra button').forEach(function(x){
+      x.classList.remove('on'); });
     b.classList.add('on'); filtro = b.dataset.f; aplica();
   });
 });
