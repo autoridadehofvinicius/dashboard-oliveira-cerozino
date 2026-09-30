@@ -82,13 +82,18 @@ main{padding:24px 0 56px;display:flex;flex-direction:column;gap:14px}
   border-radius:2px;color:var(--frio)}
 .selo.morno{color:var(--morno)}
 .selo.quente{color:var(--quente);background:var(--gold-soft)}
+/* marca o lead que veio do formulario longo — ele tem tres respostas a mais */
+.tag{font:600 .58rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold-2);border:1px solid rgba(201,164,79,.34);border-radius:2px;
+  padding:4px 7px}
 .amarca{margin:17px 0 15px;padding:13px 15px;background:rgba(255,255,255,.022);
   border-left:2px solid var(--gold-2)}
 .amarca span{display:block;font-size:.62rem;letter-spacing:.2em;
   text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .amarca b{font:400 1.2rem/1.25 var(--serif);color:var(--gold);word-break:break-word}
 dl{margin:0 0 17px;display:grid;gap:9px}
-dl div{display:grid;grid-template-columns:8.4rem 1fr;gap:12px;font-size:.87rem;
+/* 9.8rem cabe "Conhece o processo" e "Momento do negocio" numa linha so */
+dl div{display:grid;grid-template-columns:9.8rem 1fr;gap:12px;font-size:.87rem;
   align-items:baseline}
 dt{color:var(--muted);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase}
 dd{margin:0;color:var(--ink2)}
@@ -144,7 +149,7 @@ footer .por{text-align:right}
     <h2>Registro de Marca</h2>
   </div>
   <div class="resumo">
-    <div class="bloco"><div class="n">40</div>
+    <div class="bloco"><div class="n">44</div>
       <div class="r">Leads recebidos</div></div>
     <div class="bloco destaque"><div class="n">10</div>
       <div class="r">De prioridade</div></div>
@@ -160,6 +165,24 @@ footer .por{text-align:right}
 </div></nav>
 
 <main class="faixa" id="lista">
+      <article class="lead frio" data-temp="frio" data-id="1647487736812735">
+        <div class="cab">
+          <div>
+            <div class="quando" data-ts="2026-09-29T16:09:13-03:00">29/09/2026 às 16:09<span class="atras"></span><span class="tag">Formul&aacute;rio qualificado</span></div>
+            <h3>Winicius Henrique Otaviano Rodrigues</h3>
+          </div>
+          <span class="selo frio">Frio</span>
+        </div>
+        <div class="amarca"><span>Marca</span><b>...</b></div>
+        <dl><div><dt>Segmento</dt><dd>...</dd></div><div><dt>Momento do negócio</dt><dd>Empresa em crescimento</dd></div><div><dt>Faturamento</dt><dd>Acima de R$ 200 mil</dd></div><div><dt>Por que agora</dt><dd>Vai crescer: filial, marketplace ou franquia</dd></div><div><dt>Conhece o processo</dt><dd>Ainda não, quer entender</dd></div><div><dt>Prazo</dt><dd>Ainda não tem previsão</dd></div><div><dt>Investimento</dt><dd>Acima do que imaginava</dd></div></dl>
+        <div class="acoes">
+          <a class="wa" href="https://wa.me/5594991060061?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20...%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
+             rel="noopener">Chamar no WhatsApp</a>
+          <a class="fone" href="tel:+5594991060061">(94) 99106-0061</a>
+          <button class="feito" type="button">Marcar atendido</button>
+        </div>
+        <div class="email">winiciushenrique17@gmail.com</div>
+      </article>
       <article class="lead morno" data-temp="morno" data-id="1076415615011592">
         <div class="cab">
           <div>
@@ -169,12 +192,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Doce memória</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Brigadeiros gourmet</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>Nos próximos meses</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Brigadeiros gourmet</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>Nos próximos meses</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5574991581126?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Doce%20mem%C3%B3ria%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -182,6 +200,60 @@ footer .por{text-align:right}
           <button class="feito" type="button">Marcar atendido</button>
         </div>
         <div class="email">jessika.t.s3@gmail.com</div>
+      </article>
+      <article class="lead morno" data-temp="morno" data-id="1434863761850098">
+        <div class="cab">
+          <div>
+            <div class="quando" data-ts="2026-09-28T23:16:02-03:00">28/09/2026 às 23:16<span class="atras"></span><span class="tag">Formul&aacute;rio qualificado</span></div>
+            <h3>Maurocouto Da Cruz</h3>
+          </div>
+          <span class="selo morno">Morno</span>
+        </div>
+        <div class="amarca"><span>Marca</span><b>Couto Panelas</b></div>
+        <dl><div><dt>Segmento</dt><dd>manutenção de panelas</dd></div><div><dt>Momento do negócio</dt><dd>Início de operação</dd></div><div><dt>Faturamento</dt><dd>Até R$ 50 mil</dd></div><div><dt>Por que agora</dt><dd>Prevenção</dd></div><div><dt>Conhece o processo</dt><dd>Ainda não, quer entender</dd></div><div><dt>Prazo</dt><dd>Nos próximos 1 a 3 meses</dd></div><div><dt>Investimento</dt><dd>Acima do que imaginava</dd></div></dl>
+        <div class="acoes">
+          <a class="wa" href="https://wa.me/5521970174941?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Couto%20Panelas%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
+             rel="noopener">Chamar no WhatsApp</a>
+          <a class="fone" href="tel:+5521970174941">(21) 97017-4941</a>
+          <button class="feito" type="button">Marcar atendido</button>
+        </div>
+        <div class="email">mcouto55dcruz@gmail.com</div>
+      </article>
+      <article class="lead frio" data-temp="frio" data-id="2059294878055577">
+        <div class="cab">
+          <div>
+            <div class="quando" data-ts="2026-09-28T23:09:53-03:00">28/09/2026 às 23:09<span class="atras"></span><span class="tag">Formul&aacute;rio qualificado</span></div>
+            <h3>Admilsa Aparecida De Souza</h3>
+          </div>
+          <span class="selo frio">Frio</span>
+        </div>
+        <div class="amarca"><span>Marca</span><b>Ateliê Costurarte</b></div>
+        <dl><div><dt>Segmento</dt><dd>costura</dd></div><div><dt>Momento do negócio</dt><dd>Empresa em crescimento</dd></div><div><dt>Faturamento</dt><dd>Ainda não faturamos</dd></div><div><dt>Por que agora</dt><dd>Viu marca igual ou parecida</dd></div><div><dt>Conhece o processo</dt><dd>Ainda não, quer entender</dd></div><div><dt>Prazo</dt><dd>Ainda não tem previsão</dd></div><div><dt>Investimento</dt><dd>Não pretende investir agora</dd></div></dl>
+        <div class="acoes">
+          <a class="wa" href="https://wa.me/5595991338803?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Ateli%C3%AA%20Costurarte%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
+             rel="noopener">Chamar no WhatsApp</a>
+          <a class="fone" href="tel:+5595991338803">(95) 99133-8803</a>
+          <button class="feito" type="button">Marcar atendido</button>
+        </div>
+        <div class="email">ateliecosturarte79@gmail.com</div>
+      </article>
+      <article class="lead frio" data-temp="frio" data-id="1783403819519628">
+        <div class="cab">
+          <div>
+            <div class="quando" data-ts="2026-09-28T22:15:43-03:00">28/09/2026 às 22:15<span class="atras"></span><span class="tag">Formul&aacute;rio qualificado</span></div>
+            <h3>Silvana Aparecida de Fátima Ramos</h3>
+          </div>
+          <span class="selo frio">Frio</span>
+        </div>
+        <div class="amarca"><span>Marca</span><b>Texas cowboy</b></div>
+        <dl><div><dt>Segmento</dt><dd>alimentação</dd></div><div><dt>Momento do negócio</dt><dd>Ainda não comecei a operar</dd></div><div><dt>Faturamento</dt><dd>Ainda não faturamos</dd></div><div><dt>Por que agora</dt><dd>Prevenção</dd></div><div><dt>Conhece o processo</dt><dd>Ainda não, quer entender</dd></div><div><dt>Prazo</dt><dd>Nos próximos 1 a 3 meses</dd></div><div><dt>Investimento</dt><dd>Não pretende investir agora</dd></div></dl>
+        <div class="acoes">
+          <a class="wa" href="https://wa.me/5516996172898?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Texas%20cowboy%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
+             rel="noopener">Chamar no WhatsApp</a>
+          <a class="fone" href="tel:+5516996172898">(16) 99617-2898</a>
+          <button class="feito" type="button">Marcar atendido</button>
+        </div>
+        <div class="email">silvanafatima4231@gmail.com</div>
       </article>
       <article class="lead morno" data-temp="morno" data-id="1632708891881798">
         <div class="cab">
@@ -192,12 +264,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Heitor dos Prazeres Produções &amp; Eventos ltda.</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Prestação de serviço</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Prestação de serviço</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5521981756357?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Heitor%20dos%20Prazeres%20Produ%C3%A7%C3%B5es%20%26%20Eventos%20ltda.%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -215,12 +282,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>JC</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>construção civil</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>construção civil</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5548988701356?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20JC%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -238,12 +300,7 @@ footer .por{text-align:right}
           <span class="selo quente">Prioridade</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Cantinho Real do Pastel</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Sucos, refrigerantes e Pastel</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Sucos, refrigerantes e Pastel</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5567981306313?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Cantinho%20Real%20do%20Pastel%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -261,12 +318,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Mjr</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Cavalo</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Ainda estou apenas avaliando a ideia</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Cavalo</dd></div><div><dt>Situação</dt><dd>Ainda estou apenas avaliando a ideia</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5544999029189?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Mjr%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -284,12 +336,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Lô d' Lú</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>artesanato e salgados</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Ainda estou apenas avaliando a ideia</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>artesanato e salgados</dd></div><div><dt>Situação</dt><dd>Ainda estou apenas avaliando a ideia</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5555999178010?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20L%C3%B4%20d%27%20L%C3%BA%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -307,12 +354,7 @@ footer .por{text-align:right}
           <span class="selo quente">Prioridade</span>
         </div>
         <div class="amarca"><span>Marca</span><b>mospii</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>educação financeira</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Vou lançar a marca em breve</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>educação financeira</dd></div><div><dt>Situação</dt><dd>Vou lançar a marca em breve</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5521999765801?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20mospii%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -330,12 +372,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>ateliê Maria Barbosa</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Saúde e Estética</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Ainda estou apenas avaliando a ideia</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Saúde e Estética</dd></div><div><dt>Situação</dt><dd>Ainda estou apenas avaliando a ideia</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5516698298202?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20ateli%C3%AA%20Maria%20Barbosa%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -353,12 +390,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Punktoberfest</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Festival de música</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Festival de música</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5541999191492?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Punktoberfest%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -376,12 +408,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Don Bruno Barbearia</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Barbearia</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Vou lançar a marca em breve</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Barbearia</dd></div><div><dt>Situação</dt><dd>Vou lançar a marca em breve</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5516981440786?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Don%20Bruno%20Barbearia%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -399,12 +426,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Marymendonca</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Pijama e jaleco</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Pijama e jaleco</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5555949915160?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Marymendonca%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -422,12 +444,7 @@ footer .por{text-align:right}
           <span class="selo quente">Prioridade</span>
         </div>
         <div class="amarca"><span>Marca</span><b>BENNY GOLD MONTADOR DE MÓVEIS</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>serviços de montagem</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Vou lançar a marca em breve</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>serviços de montagem</dd></div><div><dt>Situação</dt><dd>Vou lançar a marca em breve</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5521975058670?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20BENNY%20GOLD%20MONTADOR%20DE%20M%C3%93VEIS%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -445,12 +462,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>cléosilva a rainha do vaqueiro a original a legítima a única</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>cantora</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>cantora</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5599991839089?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20cl%C3%A9osilva%20a%20rainha%20do%20vaqueiro%20a%20original%20a%20leg%C3%ADtima%20a%20%C3%BAnica%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -468,12 +480,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Saber Comer Ltda</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Alimentos</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Vou lançar a marca em breve</dd></div>
-          <div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Alimentos</dd></div><div><dt>Situação</dt><dd>Vou lançar a marca em breve</dd></div><div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5571987609810?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Saber%20Comer%20Ltda%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -491,12 +498,7 @@ footer .por{text-align:right}
           <span class="selo quente">Prioridade</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Pandas barber</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Barbearia</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Barbearia</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5582999587433?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Pandas%20barber%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -514,12 +516,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>ZT DE SG</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Músicas trep fank</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Neste momento, não pretendo investir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Músicas trep fank</dd></div><div><dt>Situação</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Neste momento, não pretendo investir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5521998134916?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20ZT%20DE%20SG%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -537,12 +534,7 @@ footer .por{text-align:right}
           <span class="selo quente">Prioridade</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Clelia</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>V</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Vou lançar a marca em breve</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>V</dd></div><div><dt>Situação</dt><dd>Vou lançar a marca em breve</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5571986155411?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Clelia%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -560,12 +552,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Grantek Info</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>informática e celulares</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>informática e celulares</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5551999242315?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Grantek%20Info%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -583,12 +570,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Talis</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Talis</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Ainda estou apenas avaliando a ideia</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Neste momento, não pretendo investir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Talis</dd></div><div><dt>Situação</dt><dd>Ainda estou apenas avaliando a ideia</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Neste momento, não pretendo investir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5589981390090?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Talis%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -606,12 +588,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>instituto Bios</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>entitade do terceiro assistência a saúde e educação</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Ainda estou apenas avaliando a ideia</dd></div>
-          <div><dt>Prazo</dt><dd>Nos próximos meses</dd></div>
-          <div><dt>Investimento</dt><dd>Neste momento, não pretendo investir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>entitade do terceiro assistência a saúde e educação</dd></div><div><dt>Situação</dt><dd>Ainda estou apenas avaliando a ideia</dd></div><div><dt>Prazo</dt><dd>Nos próximos meses</dd></div><div><dt>Investimento</dt><dd>Neste momento, não pretendo investir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5583991406933?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20instituto%20Bios%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -629,12 +606,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Rodrigues de Lima Consultoria &amp; advocacia</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>correspondencia juridica</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Ainda estou apenas avaliando a ideia</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>correspondencia juridica</dd></div><div><dt>Situação</dt><dd>Ainda estou apenas avaliando a ideia</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5585999843537?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Rodrigues%20de%20Lima%20Consultoria%20%26%20advocacia%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -652,12 +624,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Joga Facil</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Artigos esportivos</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Vou lançar a marca em breve</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Artigos esportivos</dd></div><div><dt>Situação</dt><dd>Vou lançar a marca em breve</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5511962270626?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Joga%20Facil%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -675,12 +642,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>PAN DORA GOURMET COM SERV LTDA</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>alimentação</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>alimentação</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5511987379197?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20PAN%20DORA%20GOURMET%20COM%20SERV%20LTDA%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -698,12 +660,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>KBorges Hair</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Salão beleza</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Vou lançar a marca em breve</dd></div>
-          <div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Salão beleza</dd></div><div><dt>Situação</dt><dd>Vou lançar a marca em breve</dd></div><div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div><div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5521999950630?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20KBorges%20Hair%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -721,12 +678,7 @@ footer .por{text-align:right}
           <span class="selo quente">Prioridade</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Nl</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>obra e comércio</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div>
-          <div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>obra e comércio</dd></div><div><dt>Situação</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div><div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div><div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5511932992725?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Nl%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -744,12 +696,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>e nois no samba estilo jeans</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>roupas e sapatos</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Vou lançar a marca em breve</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>roupas e sapatos</dd></div><div><dt>Situação</dt><dd>Vou lançar a marca em breve</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5521995896105?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20e%20nois%20no%20samba%20estilo%20jeans%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -767,12 +714,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>...</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>...</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Neste momento, não pretendo investir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>...</dd></div><div><dt>Situação</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Neste momento, não pretendo investir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5594991060061?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20...%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -790,12 +732,7 @@ footer .por{text-align:right}
           <span class="selo quente">Prioridade</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Não tem</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Não tem</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Vou lançar a marca em breve</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Não tem</dd></div><div><dt>Situação</dt><dd>Vou lançar a marca em breve</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5521982560878?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20N%C3%A3o%20tem%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -813,12 +750,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Jh</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Portões</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Portões</dd></div><div><dt>Situação</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5585994407334?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Jh%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -836,12 +768,7 @@ footer .por{text-align:right}
           <span class="selo quente">Prioridade</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Destaque solar</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>No ramo de energia solar</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Vou lançar a marca em breve</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>No ramo de energia solar</dd></div><div><dt>Situação</dt><dd>Vou lançar a marca em breve</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5577999929148?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Destaque%20solar%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -859,12 +786,7 @@ footer .por{text-align:right}
           <span class="selo quente">Prioridade</span>
         </div>
         <div class="amarca"><span>Marca</span><b>ARTE EM TEMPERO</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Temperos, geleias</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Temperos, geleias</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div><div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5511976433638?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20ARTE%20EM%20TEMPERO%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -882,12 +804,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Fundação Pão da Vida</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Por ser Fundação , trabalhamos com ações sociais com famílias, cursos, esportes etc…</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Por ser Fundação , trabalhamos com ações sociais com famílias, cursos, esportes etc…</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5521975598977?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Funda%C3%A7%C3%A3o%20P%C3%A3o%20da%20Vida%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -905,12 +822,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Lp construtora prado</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Construção civil</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Construção civil</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div><div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5546999875814?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Lp%20construtora%20prado%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -928,12 +840,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Studio Diniz Moda &amp; Beleza</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>epilação corporal,tranças,roupas femininas,acessórios</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Ainda estou apenas avaliando a ideia</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>epilação corporal,tranças,roupas femininas,acessórios</dd></div><div><dt>Situação</dt><dd>Ainda estou apenas avaliando a ideia</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5521986904822?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Studio%20Diniz%20Moda%20%26%20Beleza%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -951,12 +858,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Li Turismo</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Fretamento e Agência de Viagem</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Fretamento e Agência de Viagem</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5521999185057?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Li%20Turismo%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -974,12 +876,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>TV PUBLICIDADE FILMAGEM</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>filmagem</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>filmagem</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5562983437939?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20TV%20PUBLICIDADE%20FILMAGEM%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -997,12 +894,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Bodeco Bar e Petiscaria Ltda</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Bar e Petiscaria</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Bar e Petiscaria</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>Nos próximos 30 dias</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5584987457702?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Bodeco%20Bar%20e%20Petiscaria%20Ltda%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -1020,12 +912,7 @@ footer .por{text-align:right}
           <span class="selo morno">Morno</span>
         </div>
         <div class="amarca"><span>Marca</span><b>JÉ</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Têxtil</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div>
-          <div><dt>Prazo</dt><dd>Nos próximos meses</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Têxtil</dd></div><div><dt>Situação</dt><dd>A empresa existe, mas ainda estou estruturando a marca</dd></div><div><dt>Prazo</dt><dd>Nos próximos meses</dd></div><div><dt>Investimento</dt><dd>Sim, dependendo das condições de pagamento</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5511961964848?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20J%C3%89%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -1043,12 +930,7 @@ footer .por{text-align:right}
           <span class="selo frio">Frio</span>
         </div>
         <div class="amarca"><span>Marca</span><b>RBF Logística e imóveis</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>classes 39,37,36.</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Ainda estou apenas avaliando a ideia</dd></div>
-          <div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div>
-          <div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>classes 39,37,36.</dd></div><div><dt>Situação</dt><dd>Ainda estou apenas avaliando a ideia</dd></div><div><dt>Prazo</dt><dd>Estou apenas pesquisando por enquanto</dd></div><div><dt>Investimento</dt><dd>Preciso entender melhor os valores antes de decidir</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5542999350378?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20RBF%20Log%C3%ADstica%20e%20im%C3%B3veis%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -1066,12 +948,7 @@ footer .por{text-align:right}
           <span class="selo quente">Prioridade</span>
         </div>
         <div class="amarca"><span>Marca</span><b>Faculdade beer</b></div>
-        <dl>
-          <div><dt>Atividade</dt><dd>Bar e restaurante</dd></div>
-          <div><dt>Situa&ccedil;&atilde;o</dt><dd>Já utilizo a marca no meu negócio</dd></div>
-          <div><dt>Prazo</dt><dd>O quanto antes</dd></div>
-          <div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div>
-        </dl>
+        <dl><div><dt>Atividade</dt><dd>Bar e restaurante</dd></div><div><dt>Situação</dt><dd>Já utilizo a marca no meu negócio</dd></div><div><dt>Prazo</dt><dd>O quanto antes</dd></div><div><dt>Investimento</dt><dd>Sim, quero investir e começar o quanto antes</dd></div></dl>
         <div class="acoes">
           <a class="wa" href="https://wa.me/5575998268616?text=Ola%21%20Tudo%20bem%3F%20Aqui%20e%20do%20escritorio%20Oliveira%20%26%20Cerozino.%20Recebemos%20o%20seu%20formulario%20sobre%20o%20registro%20da%20marca%20Faculdade%20beer%20e%20ja%20vamos%20consultar%20a%20viabilidade%20dela%20no%20INPI.%20Podemos%20falar%20por%20aqui%3F" target="_blank"
              rel="noopener">Chamar no WhatsApp</a>
@@ -1082,7 +959,7 @@ footer .por{text-align:right}
       </article></main>
 
 <footer><div class="faixa">
-  <div>Painel interno &middot; &uacute;ltimo lead em <b>29/09/2026 às 08:14</b></div>
+  <div>Painel interno &middot; &uacute;ltimo lead em <b>29/09/2026 às 16:09</b></div>
   <div class="por">Desenvolvido por <b>Vinicius A. Souza</b><br>
     Gest&atilde;o de Tr&aacute;fego e Intelig&ecirc;ncia de Dados</div>
 </div></footer>
