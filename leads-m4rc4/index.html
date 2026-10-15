@@ -17,6 +17,9 @@
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 *{box-sizing:border-box}
+/* O atributo hidden perde para qualquer display declarado em classe — a
+   caixa de identificacao e flex e apareceria sempre. Isso tranca. */
+[hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 var(--sans);
   -webkit-font-smoothing:antialiased}
@@ -68,7 +71,10 @@ main{padding:24px 0 56px;display:flex;flex-direction:column;gap:14px}
 .lead.morno::before{background:var(--morno)}
 .lead.quente::before{background:var(--gold)}
 .lead.quente{background:var(--card-alta);border-color:rgba(226,191,106,.24)}
-.lead.atendido{opacity:.42}
+/* .42 era de quando "atendido" so queria dizer "some daqui". Agora o cartao
+   atendido carrega quem atendeu e a que horas — informacao que a equipe le,
+   entao nao pode ficar tao apagada a ponto de nao dar para ler. */
+.lead.atendido{opacity:.58}
 .lead .cab{display:flex;justify-content:space-between;gap:14px;
   align-items:flex-start}
 .lead h3{margin:0;font:400 1.24rem/1.25 var(--serif)}
@@ -109,6 +115,28 @@ dd{margin:0;color:var(--ink2)}
   color:var(--muted);padding:9px 13px;border-radius:2px;font-size:.74rem;
   letter-spacing:.06em;cursor:pointer}
 .feito:hover{border-color:var(--gold-2);color:var(--ink2)}
+/* Atendido agora e informacao da equipe, nao estado de um aparelho: por isso
+   o botao fica dourado e a assinatura de quem atendeu entra embaixo. */
+.feito.on{border-color:var(--gold-2);color:var(--gold);background:var(--gold-soft)}
+.porquem{flex-basis:100%;margin-top:9px;font-size:.73rem;color:var(--muted);
+  letter-spacing:.04em}
+.euRotulo{margin-left:auto;font-size:.74rem;color:var(--muted);cursor:pointer;
+  letter-spacing:.05em;white-space:nowrap}
+.euRotulo b{color:var(--ink2);font-weight:600}
+.euRotulo u{color:var(--gold-2);text-decoration:none;
+  border-bottom:1px solid var(--line)}
+.euquem{background:var(--card);border:1px solid var(--line);border-radius:3px;
+  margin:18px 0 0;padding:15px 17px;display:flex;gap:10px;align-items:center;
+  flex-wrap:wrap}
+.euquem label{font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted)}
+.euquem input{background:var(--bg);border:1px solid var(--line);border-radius:2px;
+  color:var(--ink);padding:9px 11px;font:400 .9rem/1 var(--sans);min-width:170px}
+.euquem input:focus{outline:none;border-color:var(--gold-2)}
+.euquem button{background:var(--gold);color:#141821;border:0;border-radius:2px;
+  padding:10px 16px;font:700 .78rem/1 var(--sans);letter-spacing:.05em;
+  cursor:pointer}
+.euquem .dica{flex-basis:100%;font-size:.72rem;color:var(--muted)}
 .email{margin-top:12px;font-size:.78rem;color:var(--muted);word-break:break-all}
 .vazio{background:var(--card);border:1px dashed var(--line);border-radius:3px;
   padding:62px 24px;text-align:center;color:var(--muted)}
@@ -162,9 +190,19 @@ footer .por{text-align:right}
   <button class="on" data-f="todos">Todos</button>
   <button data-f="quente">Prioridade</button>
   <button data-f="pendentes">N&atilde;o atendidos</button>
+  <span class="euRotulo" id="euRotulo" hidden>Voc&ecirc;: <b></b> &middot; <u>trocar</u></span>
 </div></nav>
 
 <main class="faixa" id="lista">
+  <form class="euquem" id="euquem" hidden>
+    <label for="euNome">Quem est&aacute; usando este aparelho?</label>
+    <input id="euNome" type="text" maxlength="40" placeholder="Seu nome"
+           autocomplete="name">
+    <button type="submit">Salvar</button>
+    <span class="dica">Fica guardado s&oacute; neste aparelho. Serve para a
+      equipe ver quem atendeu cada lead.</span>
+  </form>
+
       <article class="lead quente" data-temp="quente" data-id="2426288144445314">
         <div class="cab">
           <div>
@@ -180,6 +218,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5527999682411">(27) 99968-2411</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">jkarmagin@gmail.com</div>
       </article>
@@ -198,6 +237,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5522988163248">(22) 98816-3248</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">Shoraya.turismo@gmail.com</div>
       </article>
@@ -216,6 +256,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5599968043565">(99) 96804-3565</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">antonioalvesdesouza356@gmail.com</div>
       </article>
@@ -234,6 +275,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5574999272610">(74) 99927-2610</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">crislaynecosta39@gmail.com</div>
       </article>
@@ -252,6 +294,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5561993010034">(61) 99301-0034</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">mesafartaefacil@gmail.com</div>
       </article>
@@ -270,6 +313,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5511961381796">(11) 96138-1796</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">wrlopesempresa@hotmail.com</div>
       </article>
@@ -288,6 +332,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5548998332367">(48) 99833-2367</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">migueledmilson38@gmail.com</div>
       </article>
@@ -306,6 +351,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521964916381">(21) 96491-6381</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">valtair_a@yahoo.com.br</div>
       </article>
@@ -324,6 +370,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521987006257">(21) 98700-6257</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">vivyfariasoares@hotmail.com</div>
       </article>
@@ -342,6 +389,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521982446840">(21) 98244-6840</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">ferrari13032011@gmail.com</div>
       </article>
@@ -360,6 +408,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5511932004453">(11) 93200-4453</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">juliocesarroma616@gmail.com</div>
       </article>
@@ -378,6 +427,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5587988275926">(87) 98827-5926</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">naldinsilva170@gmail.com</div>
       </article>
@@ -396,6 +446,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521995273125">(21) 99527-3125</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">Simeonesantosfaustofausto@gmail.com.br</div>
       </article>
@@ -414,6 +465,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5544984384794">(44) 98438-4794</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">alyssonth21@gmail.com</div>
       </article>
@@ -432,6 +484,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5512991427228">(12) 99142-7228</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">ivetepereiracunha2017@gmail.com.br</div>
       </article>
@@ -450,6 +503,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5585985507327">(85) 98550-7327</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">grijalbalinhares@gmail.com</div>
       </article>
@@ -468,6 +522,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521972124654">(21) 97212-4654</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">quebki15@gmail.com</div>
       </article>
@@ -486,6 +541,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5541996979150">(41) 99697-9150</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">ferreiragas01@gmail.com</div>
       </article>
@@ -504,6 +560,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5519996617138">(19) 99661-7138</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">joanazamora@gmail.com</div>
       </article>
@@ -522,6 +579,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521991889186">(21) 99188-9186</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">pongira@gmail.com</div>
       </article>
@@ -540,6 +598,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521975434319">(21) 97543-4319</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">oi.aquinojunior@gmail.com</div>
       </article>
@@ -558,6 +617,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5512981729958">(12) 98172-9958</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">nelsonmundonovo.70@gmail.com</div>
       </article>
@@ -576,6 +636,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5554996042031">(54) 99604-2031</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">Xele2017@gmail.com</div>
       </article>
@@ -594,6 +655,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5594991060061">(94) 99106-0061</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">winiciushenrique17@gmail.com</div>
       </article>
@@ -612,6 +674,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5574991581126">(74) 99158-1126</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">jessika.t.s3@gmail.com</div>
       </article>
@@ -630,6 +693,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521970174941">(21) 97017-4941</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">mcouto55dcruz@gmail.com</div>
       </article>
@@ -648,6 +712,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5595991338803">(95) 99133-8803</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">ateliecosturarte79@gmail.com</div>
       </article>
@@ -666,6 +731,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5516996172898">(16) 99617-2898</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">silvanafatima4231@gmail.com</div>
       </article>
@@ -684,6 +750,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521981756357">(21) 98175-6357</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">heitordosprazereseventos@gmail.com</div>
       </article>
@@ -702,6 +769,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5548988701356">(48) 98870-1356</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">jheniferfranciscoaraujoeugenio@gmail.com</div>
       </article>
@@ -720,6 +788,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5567981306313">(67) 98130-6313</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">siqueirajoanice69@gmail.com</div>
       </article>
@@ -738,6 +807,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5544999029189">(44) 99902-9189</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">paulocesarxaviersouza@gmail.com</div>
       </article>
@@ -756,6 +826,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5555999178010">(55) 99917-8010</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">j.rossal444@gmail.com</div>
       </article>
@@ -774,6 +845,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521999765801">(21) 99976-5801</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">rleal2001@gmail.com</div>
       </article>
@@ -792,6 +864,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5516698298202">(16) 69829-8202</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">mcavendas49pr@hotmail.com</div>
       </article>
@@ -810,6 +883,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5541999191492">(41) 99919-1492</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">jr92graus@gmail.com</div>
       </article>
@@ -828,6 +902,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5516981440786">(16) 98144-0786</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">bruno.campos.bruno@gmail.com</div>
       </article>
@@ -846,6 +921,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5555949915160">(55) 94991-5160</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">mariletelima2013@gmail.com</div>
       </article>
@@ -864,6 +940,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521975058670">(21) 97505-8670</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">adrianonicolly13@gmail.com</div>
       </article>
@@ -882,6 +959,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5599991839089">(99) 99183-9089</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">cleoaoriginal@gmail.com</div>
       </article>
@@ -900,6 +978,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5571987609810">(71) 98760-9810</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">valdanvaz99@gmail.com</div>
       </article>
@@ -918,6 +997,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5582999587433">(82) 99958-7433</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">papicus@gmail.com</div>
       </article>
@@ -936,6 +1016,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521998134916">(21) 99813-4916</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">mellopagliassamarlon@gmail.com</div>
       </article>
@@ -954,6 +1035,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5571986155411">(71) 98615-5411</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">venegeroles.clelia@gmail.com</div>
       </article>
@@ -972,6 +1054,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5551999242315">(51) 99924-2315</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">grantekrs@gmail.com</div>
       </article>
@@ -990,6 +1073,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5589981390090">(89) 98139-0090</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">raimundabezerrademorais122@gmail.com</div>
       </article>
@@ -1008,6 +1092,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5583991406933">(83) 99140-6933</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">jomariomeirelesalves@gmail.com</div>
       </article>
@@ -1026,6 +1111,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5585999843537">(85) 99984-3537</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">mariaelizabeterodrigues322@gmail.com</div>
       </article>
@@ -1044,6 +1130,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5511962270626">(11) 96227-0626</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">reinaldocarmus@gmail.com</div>
       </article>
@@ -1062,6 +1149,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5511987379197">(11) 98737-9197</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">daybritorubem@yahoo.com</div>
       </article>
@@ -1080,6 +1168,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521999950630">(21) 99995-0630</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">ericaalvesdesouza474@gmail.com</div>
       </article>
@@ -1098,6 +1187,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5511932992725">(11) 93299-2725</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">Josecleitonfernandesds@gmail.com</div>
       </article>
@@ -1116,6 +1206,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521995896105">(21) 99589-6105</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">luizaocerqueira@yahoo.com.br</div>
       </article>
@@ -1134,6 +1225,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5594991060061">(94) 99106-0061</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">winiciushenrique17@gmail.com</div>
       </article>
@@ -1152,6 +1244,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521982560878">(21) 98256-0878</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">tinaroberttt@gmail.com</div>
       </article>
@@ -1170,6 +1263,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5585994407334">(85) 99440-7334</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">julionetoferreira60@gmail.com</div>
       </article>
@@ -1188,6 +1282,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5577999929148">(77) 99992-9148</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">Joaokjb@hotmail.com</div>
       </article>
@@ -1206,6 +1301,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5511976433638">(11) 97643-3638</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">valquiriasc@hotmail.com</div>
       </article>
@@ -1224,6 +1320,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521975598977">(21) 97559-8977</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">ariceuborba18@yahoo.com</div>
       </article>
@@ -1242,6 +1339,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5546999875814">(46) 99987-5814</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">luizpauloprado65@gmail.com</div>
       </article>
@@ -1260,6 +1358,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521986904822">(21) 98690-4822</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">denisefranciscodiniz1969@gmail.com</div>
       </article>
@@ -1278,6 +1377,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5521999185057">(21) 99918-5057</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">cnvieira@hotmail.com</div>
       </article>
@@ -1296,6 +1396,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5562983437939">(62) 98343-7939</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">rodriguestavio@gmail.com</div>
       </article>
@@ -1314,6 +1415,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5584987457702">(84) 98745-7702</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">jubiansiqueira@yahoo.com.br</div>
       </article>
@@ -1332,6 +1434,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5511961964848">(11) 96196-4848</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">priscillasabinas@gmail.com</div>
       </article>
@@ -1350,6 +1453,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5542999350378">(42) 99935-0378</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">robertobalduino02@gmail.com</div>
       </article>
@@ -1368,6 +1472,7 @@ footer .por{text-align:right}
              rel="noopener">Chamar no WhatsApp</a>
           <a class="fone" href="tel:+5575998268616">(75) 99826-8616</a>
           <button class="feito" type="button">Marcar atendido</button>
+          <div class="porquem"></div>
         </div>
         <div class="email">Silvaniaolibeiira14@gmail.com</div>
       </article></main>
@@ -1379,20 +1484,86 @@ footer .por{text-align:right}
 </div></footer>
 
 <script>
-/* "Atendido" mora no proprio aparelho. NAO e compartilhado com a equipe: se a
-   secretaria marcar no celular dela, o advogado continua vendo como pendente.
-   Compartilhar exigiria banco de dados, e a pagina e estatica de proposito. */
-var FEITOS = JSON.parse(localStorage.getItem('oc_leads_feitos') || '[]');
+/* ESTADO COMPARTILHADO DO "ATENDIDO"
+   ---------------------------------------------------------------------------
+   Antes, atendido morava so no localStorage: cada aparelho tinha a sua propria
+   lista, e o que o Andre marcava no celular dele nao aparecia para mais
+   ninguem. Foi a reclamacao do escritorio em 15/10/2026 — e era por desenho,
+   nao por defeito: pagina estatica nao tem onde guardar estado comum.
+
+   Agora o status vai para um endpoint compartilhado (status-compartilhado.gs,
+   um Apps Script do usuario) e a pagina pergunta por ele a cada 15 segundos.
+   La dentro nao entra nome, telefone nem e-mail: so o ID do lead, o status,
+   quem marcou e quando. O dado pessoal continua so aqui.
+
+   O localStorage continua em uso, agora em dois papeis legitimos: guardar QUEM
+   esta usando este aparelho, e segurar o clique que ainda nao subiu.
+
+   SE O ENDPOINT NAO ESTIVER CONFIGURADO (API vazio) OU ESTIVER FORA DO AR, a
+   pagina funciona como funcionava antes — marca no aparelho. Em nenhuma
+   hipotese a equipe fica sem botao.                                         */
+var API = '';
+var CHAVE = 'troque-esta-frase';
+
+var EU = localStorage.getItem('oc_quem') || '';
+var ESTADO = {};
+/* Cliques que ainda nao subiram. Moram no aparelho para sobreviver a recarga:
+   a pagina se recarrega sozinha a cada 2 min, e sem isso marcar um lead com
+   sinal ruim perderia a marcacao sem avisar. */
+var FILA = JSON.parse(localStorage.getItem('oc_fila') || '[]');
+/* Lista antiga, de antes do estado compartilhado. Ninguem perde o que ja tinha
+   marcado: ela vale como ultimo recurso quando nao existe endpoint. */
+var LOCAL = JSON.parse(localStorage.getItem('oc_leads_feitos') || '[]');
 var filtro = 'todos';
+
+function salvaFila(){ localStorage.setItem('oc_fila', JSON.stringify(FILA)); }
+
+function pendente(id){
+  for (var i = FILA.length - 1; i >= 0; i--) if (FILA[i].id === id) return FILA[i];
+  return null;
+}
+/* O que vale na tela: clique ainda nao sincronizado ganha do servidor. Sem
+   isso a pessoa veria o proprio clique voltar atras por 15 segundos. */
+function atual(id){
+  var p = pendente(id);
+  if (p) return {status:p.status, quem:p.quem, quando:p.quando, subindo:true};
+  if (ESTADO[id]) return ESTADO[id];
+  if (!API && LOCAL.indexOf(id) >= 0) return {status:'feito', quem:''};
+  return {status:'aberto', quem:''};
+}
+function feito(id){ return atual(id).status === 'feito'; }
+
+/* "Atendido por Andre - 14:12", na hora local de quem olha. */
+function assina(a){
+  var t = '';
+  if (a.quando){
+    var d = new Date(a.quando);
+    if (!isNaN(d.getTime())){
+      t = d.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+      if (d.toDateString() !== new Date().toDateString())
+        t = d.toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit'}) + ' ' + t;
+    }
+  }
+  var txt = 'Atendido';
+  if (a.quem) txt += ' por ' + a.quem;
+  if (t) txt += ' - ' + t;
+  if (a.subindo) txt += ' (enviando...)';
+  return txt;
+}
 
 function pinta(){
   var pend = 0;
   document.querySelectorAll('.lead').forEach(function(el){
-    var f = FEITOS.indexOf(el.dataset.id) >= 0;
+    var a = atual(el.dataset.id), f = a.status === 'feito';
     el.classList.toggle('atendido', f);
     if (!f) pend++;
     var b = el.querySelector('.feito');
-    if (b) b.textContent = f ? 'Atendido' : 'Marcar atendido';
+    if (b){
+      b.textContent = f ? 'Atendido' : 'Marcar atendido';
+      b.classList.toggle('on', f);
+    }
+    var q = el.querySelector('.porquem');
+    if (q) q.textContent = f ? assina(a) : '';
   });
   var alvo = document.getElementById('pendentes');
   if (alvo) alvo.textContent = pend;
@@ -1401,18 +1572,104 @@ function aplica(){
   document.querySelectorAll('.lead').forEach(function(el){
     var ok = filtro === 'todos'
       || (filtro === 'quente'    && el.dataset.temp === 'quente')
-      || (filtro === 'pendentes' && FEITOS.indexOf(el.dataset.id) < 0);
+      || (filtro === 'pendentes' && !feito(el.dataset.id));
     el.style.display = ok ? '' : 'none';
   });
 }
+
+/* Perguntado uma vez por aparelho. Nao e login e nao protege nada: serve para
+   a marcacao ficar assinada, para ninguem ter que perguntar no grupo quem ja
+   ligou para o lead. */
+function identifica(depois){
+  var cx = document.getElementById('euquem');
+  if (!cx){ EU = EU || 'equipe'; if (depois) depois(); return; }
+  cx.hidden = false;
+  var inp = cx.querySelector('input');
+  inp.value = EU;
+  inp.focus();
+  cx.onsubmit = function(ev){
+    ev.preventDefault();
+    var v = inp.value.trim().slice(0, 40);
+    if (!v) return;
+    EU = v;
+    localStorage.setItem('oc_quem', EU);
+    cx.hidden = true;
+    mostraEu();
+    if (depois) depois();
+  };
+}
+function mostraEu(){
+  var r = document.getElementById('euRotulo');
+  if (!r) return;
+  r.hidden = !(API && EU);
+  var b = r.querySelector('b');
+  if (b) b.textContent = EU;
+}
+
+function marca(id, novo){
+  FILA = FILA.filter(function(x){ return x.id !== id; });
+  FILA.push({id:id, status:novo, quem:EU, quando:new Date().toISOString()});
+  salvaFila();
+  pinta(); aplica();
+  sobe();
+}
+
+var subindo = false;
+function sobe(){
+  if (subindo || !API || !FILA.length) return;
+  subindo = true;
+  var item = FILA[0];
+  /* text/plain de proposito. Com application/json o navegador manda um OPTIONS
+     de preflight antes, e o Apps Script nao responde OPTIONS: o pedido morre
+     sem erro visivel e o status nunca sobe. */
+  fetch(API, {method:'POST',
+              headers:{'Content-Type':'text/plain;charset=utf-8'},
+              body: JSON.stringify({chave:CHAVE, id:item.id,
+                                    status:item.status, quem:item.quem})})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (!d || !d.ok) throw new Error((d && d.erro) || 'recusado');
+      FILA.shift(); salvaFila();
+      if (d.estado) ESTADO = d.estado;
+      pinta(); aplica();
+      subindo = false;
+      if (FILA.length) sobe();
+    })
+    .catch(function(){
+      /* Fica na fila e tenta no proximo ciclo. Nada se perde. */
+      subindo = false;
+    });
+}
+
+function puxa(){
+  if (!API) return;
+  fetch(API + (API.indexOf('?') < 0 ? '?' : '&') + 'chave=' + encodeURIComponent(CHAVE))
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d && d.ok && d.estado){ ESTADO = d.estado; pinta(); aplica(); }
+    })
+    .catch(function(){});
+}
+
 document.addEventListener('click', function(e){
+  if (e.target.closest('#euRotulo')){ identifica(null); return; }
+
   var b = e.target.closest('.feito'); if(!b) return;
   var id = b.closest('.lead').dataset.id;
-  var i = FEITOS.indexOf(id);
-  if (i >= 0) FEITOS.splice(i,1); else FEITOS.push(id);
-  localStorage.setItem('oc_leads_feitos', JSON.stringify(FEITOS));
-  pinta(); aplica();
+  var novo = feito(id) ? 'aberto' : 'feito';
+
+  if (!API){           /* sem endpoint configurado: comportamento de antes */
+    var i = LOCAL.indexOf(id);
+    if (novo === 'feito'){ if (i < 0) LOCAL.push(id); }
+    else if (i >= 0) LOCAL.splice(i, 1);
+    localStorage.setItem('oc_leads_feitos', JSON.stringify(LOCAL));
+    pinta(); aplica();
+    return;
+  }
+  if (!EU){ identifica(function(){ marca(id, novo); }); return; }
+  marca(id, novo);
 });
+
 document.querySelectorAll('.barra button').forEach(function(b){
   b.addEventListener('click', function(){
     document.querySelectorAll('.barra button').forEach(function(x){
@@ -1420,6 +1677,7 @@ document.querySelectorAll('.barra button').forEach(function(b){
     b.classList.add('on'); filtro = b.dataset.f; aplica();
   });
 });
+
 /* "ha 12 min", "ha 3 h", "ontem" — calculado no navegador, entao nunca
    fica velho entre uma publicacao e outra */
 function tempoAtras(){
@@ -1429,18 +1687,25 @@ function tempoAtras(){
     if (isNaN(ts)) return;
     var min = Math.floor((agora - ts) / 60000), txt;
     if (min < 1)        txt = 'agora mesmo';
-    else if (min < 60)  txt = 'há ' + min + ' min';
-    else if (min < 1440){ var h = Math.floor(min/60); txt = 'há ' + h + (h === 1 ? ' hora' : ' horas'); }
+    else if (min < 60)  txt = 'ha ' + min + ' min';
+    else if (min < 1440){ var h = Math.floor(min/60); txt = 'ha ' + h + (h === 1 ? ' hora' : ' horas'); }
     else {
       var d = Math.floor(min/1440);
-      txt = d === 1 ? 'ontem' : 'há ' + d + ' dias';
+      txt = d === 1 ? 'ontem' : 'ha ' + d + ' dias';
     }
     var s = q.querySelector('.atras');
     if (s) s.textContent = '· ' + txt;
   });
 }
-pinta(); aplica(); tempoAtras();
+
+pinta(); aplica(); tempoAtras(); mostraEu();
 setInterval(tempoAtras, 60000);
+if (API){
+  puxa();
+  setInterval(puxa, 15000);
+  setInterval(sobe, 15000);
+  sobe();
+}
 setTimeout(function(){ location.reload(); }, 120000);
 </script>
 </body></html>
