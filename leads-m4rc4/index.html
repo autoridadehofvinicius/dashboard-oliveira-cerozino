@@ -1606,14 +1606,26 @@ function mostraEu(){
   if (b) b.textContent = EU;
 }
 
+/* Cada clique ganha um numero proprio. Sem isso, o clique que acontece
+   enquanto o anterior ainda esta subindo some: o sucesso do primeiro tirava
+   "o primeiro da fila", que a essa altura ja era o segundo clique.
+
+   A fila sobrevive a recarga da pagina, entao o contador nao pode recomecar
+   do zero: o numero novo bateria com o de um clique que ficou de antes. */
+var SEQ = FILA.reduce(function(m, x){ return Math.max(m, x.seq || 0); }, 0);
+
 function marca(id, novo){
   FILA = FILA.filter(function(x){ return x.id !== id; });
-  FILA.push({id:id, status:novo, quem:EU, quando:new Date().toISOString()});
+  FILA.push({id:id, status:novo, quem:EU, quando:new Date().toISOString(),
+             seq:++SEQ});
   salvaFila();
   pinta(); aplica();
   sobe();
 }
 
+/* Momento da ultima gravacao confirmada. Serve para descartar leitura que
+   partiu antes dela e chegou depois — ver puxa(). */
+var ultimaEscrita = 0;
 var subindo = false;
 function sobe(){
   if (subindo || !API || !FILA.length) return;
@@ -1629,7 +1641,11 @@ function sobe(){
     .then(function(r){ return r.json(); })
     .then(function(d){
       if (!d || !d.ok) throw new Error((d && d.erro) || 'recusado');
-      FILA.shift(); salvaFila();
+      ultimaEscrita = Date.now();
+      /* Tira da fila ESTE clique, nao "o primeiro" — se a pessoa clicou de
+         novo enquanto este subia, o clique novo tem que continuar na fila. */
+      FILA = FILA.filter(function(x){ return x.seq !== item.seq; });
+      salvaFila();
       if (d.estado) ESTADO = d.estado;
       pinta(); aplica();
       subindo = false;
@@ -1643,9 +1659,17 @@ function sobe(){
 
 function puxa(){
   if (!API) return;
+  /* A CORRIDA QUE FAZIA A MARCACAO "VOLTAR SOZINHA": a leitura automatica
+     roda a cada 15 s. Se ela partiu um instante ANTES do clique ser gravado e
+     a resposta chegou DEPOIS, ela trazia o estado velho — sem a marca — e
+     sobrescrevia a marca recem-feita. Na tela: o lead voltava para "Marcar
+     atendido" sozinho, segundos depois. Por isso guardo quando a leitura
+     comecou e jogo fora a que for mais velha que a ultima gravacao. */
+  var t0 = Date.now();
   fetch(API + (API.indexOf('?') < 0 ? '?' : '&') + 'chave=' + encodeURIComponent(CHAVE))
     .then(function(r){ return r.json(); })
     .then(function(d){
+      if (t0 < ultimaEscrita) return;
       if (d && d.ok && d.estado){ ESTADO = d.estado; pinta(); aplica(); }
     })
     .catch(function(){});
